@@ -7,6 +7,53 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
+## v10.0.1 — Hotfix (April 17, 2026)
+
+### Critical Fixes
+- **Auto-Updater Schema Mismatch** resolved — flat and nested feed schemas now both accepted; zero successful auto-updates from v10.0.0 was caused by this. Users on v9.x must install v10.0.1 manually once.
+- **Export/Import** — valid zips with schema version, manifest, credential redaction; accepts legacy formats for backward compat
+- **Multi-Step Tool Chains** — no longer exit prematurely when the model returns empty text between tool calls
+- **Advisor Strategy** — simple chat no longer routed through the expensive Planner (complexity gate)
+- **Gemini Tool Schema** — stripped OpenAI-specific fields that Gemini silently rejected; tool calls restored for Gemini models
+- **create_task vs planner_create_task** — disambiguated via explicit tool descriptions + system prompt routing rules
+
+### Integrations
+- Telegram outbound Chat-ID persisted across bot restarts (`telegram-state.json`)
+- SMTP Test race condition eliminated
+- Lio AI provider dropdown labels no longer show raw i18n key paths
+- Custom endpoint URLs (LM Studio, Ollama) normalized case-insensitive at fetch time
+
+### Agent Behavior
+- System prompt now explicitly authorizes file access (prevents "Systembeschränkungen" hallucinations)
+- Folder structure creation supports recursive paths in a single tool call
+- Internal diagnostics protocol — agent checks local state before suggesting support
+
+### Configuration
+- New Setting: Request timeout (30–600s slider) for long agent tasks
+- Emoji loader negative-cache — no more 404 spam on codepoints without Lottie
+
+### Discover Feed
+- 29 v10 event templates now render custom text from client payloads
+
+### Security (PHP + WordPress)
+- Feed backend: IP hashing aligned with SHA-256 + salt across all endpoints
+- WordPress Connector 1.2.1: timing-safe token compare + file upload MIME allowlist
+
+### Localization
+- 132 new `settings.providers.*` keys across 12 locales
+- 4 chat state messages moved from hardcoded English to i18n
+- requestTimeout setting fully translated
+
+### Known Issues
+- Reasoning display still abbreviated (deferred to v10.1)
+- macOS notarization not yet implemented — right-click → Open required on first launch
+- SSH key authentication in SSH tool deferred to v10.1
+
+### Upgrade Path
+Auto-update works from v10.0.1 onwards. Users on v9.x: download manually from skales.app once.
+
+---
+
 ## v10.0.0 — "Closing the Gap" (April 16, 2026)
 
 The biggest Skales release ever. Desktop + Mobile + Relay now form one ecosystem: every message you send from your phone routes through Desktop's full tool set, every capability you build on Desktop is reachable from the Mobile companion. Chat feels smoother. Studio speaks video. Settings speaks voice.

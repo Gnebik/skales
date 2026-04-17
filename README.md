@@ -17,7 +17,7 @@
   </p>
 
   <p>
-    <a href="https://github.com/skalesapp/skales/releases/tag/v10.0.0"><img src="https://img.shields.io/badge/version-10.0.0-10b981?style=flat-square" alt="Version 10.0.0" /></a>
+    <a href="https://github.com/skalesapp/skales/releases/tag/v10.0.1"><img src="https://img.shields.io/badge/version-10.0.1-10b981?style=flat-square" alt="Version 10.0.1" /></a>
     <a href="https://skales.app"><img src="https://img.shields.io/badge/license-BSL_1.1-10b981?style=flat-square" alt="License" /></a>
     <a href="https://skales.app"><img src="https://img.shields.io/badge/Windows_+_macOS_+_Linux_+_Android-10b981?style=flat-square&logo=windows&logoColor=white" alt="Platform" /></a>
     <a href="https://github.com/skalesapp/skales/stargazers"><img src="https://img.shields.io/github/stars/skalesapp/skales?style=flat-square&color=10b981" alt="Stars" /></a>
@@ -32,7 +32,7 @@
   </p>
 
   <p>
-    <sub>🎉 <b>v10.0.0 "Closing the Gap"</b> — Desktop + Mobile + Relay, one ecosystem. Animated emojis, voice in/out, fal.ai video, inline HTML preview. <a href="./CHANGELOG.md">See what's new →</a></sub>
+    <sub>🎉 <b>v10.0.1 "Closing the Gap"</b> — Auto-updater fix, export/import, multi-step tool chains, Gemini tool schema, and 19 more fixes. <a href="./CHANGELOG.md">See what's new →</a></sub>
   </p>
   <p>
     <a href="https://docs.skales.app">Documentation</a> · <a href="https://getskales.app">Blog</a> · <a href="./CHANGELOG.md">Changelog</a> · <a href="https://github.com/skalesapp/skales/discussions">Community</a>
