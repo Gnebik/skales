@@ -90,10 +90,10 @@ Select any project folder. Describe the task. Pick your model. Watch the agent r
 Build an AI company. Create departments, assign specialized agents, set team leaders, and delegate complex tasks. The CEO agent auto-routes work to the right team. Export and import Company Packs to share your org setup. Advisor Strategy: use a powerful model for planning and a fast model for execution.
 
 ### 📱 Skales Mobile (NEW in v10)
-Your AI agent in your pocket. Android now, iOS soon. Pair via QR and the phone instantly gets access to THIS desktop's full tool set (139+ tools: shell, files, browser control, email, calendar, Studio, everything). End-to-end encrypted over the Skales relay (TweetNaCl box, keys never leave the devices). Or run the phone **standalone** — 27 native mobile tools, no desktop needed. Shared ecosystem: same Discover Feed, same Custom Agents, same Skills.
+Your AI agent in your pocket. Android now, iOS soon. Pair via QR and the phone instantly gets access to THIS desktop's full tool set (139+ tools: shell, files, browser control, email, calendar, Studio, everything). End-to-end encrypted relay. Keys never leave the devices. Or run the phone **standalone** — 27 native mobile tools, no desktop needed. Shared ecosystem: same Discover Feed, same Custom Agents, same Skills.
 
 ### 🗣️ Voice — Talk to Skales (NEW in v10)
-Per-message speaker icon on every AI reply. Optional "Read responses aloud" for continuous flow. TTS providers: Device voices (free), OpenAI Speech (alloy/echo/fable/onyx/nova/shimmer), ElevenLabs, Azure, or any OpenAI-compatible endpoint. STT via Groq Whisper (free tier) or OpenAI Whisper. Full Voice Chat Mode for hands-free operation.
+Per-message speaker icon on every AI reply. Optional "Read responses aloud" for continuous flow. TTS providers: Device voices (free), OpenAI Speech 6 natural voices, ElevenLabs, Azure, or any OpenAI-compatible endpoint. STT via Groq Whisper (free tier) or OpenAI Whisper. Full Voice Chat Mode for hands-free operation.
 
 ### 🌐 Inline HTML Preview (NEW in v10)
 When the AI writes a ```` ```html ```` block in chat, Skales renders it live in a sandboxed iframe right in the conversation. Perfect for "make me a chart of X", "embed a map", "build an SVG icon", mini-apps. Buttons: Show Code, Download HTML, Save as Image, Mute, Hide. Mute + hide are global and persist across sessions — one click silences every preview in every chat.
@@ -214,7 +214,7 @@ Like Spotify Wrapped for your AI. Auto-generates every Monday. Activities, top t
 - **Sandboxed:** Configurable file operation boundaries.
 - **Signed:** macOS Apple Developer ID. Windows signing coming.
 - **WordPress:** Token-based auth (SHA-256). No data leaves your site. Plugin is MIT-licensed.
-- **Emoji CDN:** Animated emojis served from our CDN (Nürnberg, Germany). Optional Google fallback off by default.
+- **Emoji CDN:** Animated emojis served from our own servers in the EU. Optional Google fallback off by default.
 
 ---
 
@@ -245,7 +245,7 @@ Like Spotify Wrapped for your AI. Auto-generates every Monday. Activities, top t
 | **Storage** | `~/.skales-data` (JSON + SQLite) |
 | **AI** | ReAct agent loop, 139+ tools, multi-agent delegation, context-aware tool filtering |
 | **Motion** | Framer Motion (message stagger, typing wave, FAB, modal springs) with `prefers-reduced-motion` honoured |
-| **Relay** | wss://relay.skales.app — E2E encrypted (TweetNaCl box) for Mobile ↔ Desktop pairing |
+| **Relay** | E2E encrypted relay for Mobile ↔ Desktop pairing |
 
 ---
 
