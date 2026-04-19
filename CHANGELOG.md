@@ -6,8 +6,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## v10.0.3 — Stability (April 18, 2026)
 
-## [10.0.2] — 2026-04-18
+### Bug Fixes
+- **Bonjour/mDNS Collision** — instance name now includes PID (`Skales-<hostname>-<pid>`); multiple Skales instances on the same machine no longer shadow each other in swarm discovery
+- **Multi-Agent Dispatch Toast** — completion notification was silently dropped after all subtasks finished; now fires a purple 🦁 toast with job title + subtask count (7 s display duration)
+- **Update Page i18n** — "Later" button showed raw key `update.later` instead of translated text; `later` key added to all 12 locale files
+- **Ollama Small-Model Warning** — settings panel now shows an orange warning when a known small model (≤3B params) is selected with `Max tools > 0`, advising the user to reduce tools or switch to a larger model
+- **fal.ai Studio Hang** — video generation polled a manually constructed status URL that broke when fal.ai changed their queue URL structure; client now uses `status_url` / `response_url` from the submit response with fallback to constructed URLs
+- **Codework UI Lag** — blank activity panel during 1–2 s SSE startup gap replaced with an optimistic "Starting session…" phase entry so the UI never appears frozen
+
+---
+
+## v10.0.2 — 2026-04-18
 
 ### Fixed
 
