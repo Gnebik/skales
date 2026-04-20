@@ -23,7 +23,7 @@
   <sub>iOS & Android currently in Beta - Q2 2026</sub>
     </p>
 <p>
-    <a href="https://github.com/skalesapp/skales/releases/tag/v10.0.3"><img src="https://img.shields.io/badge/version-10.0.3-10b981?style=flat-square" alt="Version 10.0.3" /></a>
+    <a href="https://github.com/skalesapp/skales/releases/tag/v10.0.4"><img src="https://img.shields.io/badge/version-10.0.4-10b981?style=flat-square" alt="Version 10.0.4" /></a>
     <a href="https://skales.app"><img src="https://img.shields.io/badge/license-BSL_1.1-10b981?style=flat-square" alt="License" /></a>
     <a href="https://skales.app"><img src="https://img.shields.io/badge/Windows_+_macOS_+_Linux_+_Android-10b981?style=flat-square&logo=windows&logoColor=white" alt="Platform" /></a>
     <a href="https://github.com/skalesapp/skales/stargazers"><img src="https://img.shields.io/github/stars/skalesapp/skales?style=flat-square&color=10b981" alt="Stars" /></a>
@@ -253,7 +253,7 @@ Like Spotify Wrapped for your AI. Auto-generates every Monday. Activities, top t
 
 12 Languages: EN, DE, ES, FR, IT, PT, KO, ZH, JA, VI, HR, TR.
 
-**Contributors:** [@btafoya](https://github.com/btafoya), [@bmp-jaller](https://github.com/bmp-jaller), [@henk717](https://github.com/henk717), [@SohaibKhaliq](https://github.com/SohaibKhaliq), [@VladB-evs](https://github.com/VladB-evs), [@v33-kind](https://github.com/v33-kind), [@sidharth-vijayan](https://github.com/sidharth-vijayan), [@saagnik23](https://github.com/saagnik23), [@Kombowz](https://github.com/Kombowz).
+**Contributors:** [@btafoya](https://github.com/btafoya), [@bmp-jaller](https://github.com/bmp-jaller), [@henk717](https://github.com/henk717), [@SohaibKhaliq](https://github.com/SohaibKhaliq), [@VladB-evs](https://github.com/VladB-evs), [@v33-kind](https://github.com/v33-kind), [@sidharth-vijayan](https://github.com/sidharth-vijayan), [@saagnik23](https://github.com/saagnik23), [@Kombowz](https://github.com/Kombowz), [@anthonytrance](https://github.com/anthonytrance), [@karelrokk-droid](https://github.com/karelrokk-droid), [@mclaudiopt](https://github.com/mclaudiopt), [@1Hackoon](https://github.com/1Hackoon), [@tbaumann](https://github.com/tbaumann).
 
 Want to contribute? See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 
