@@ -6,6 +6,38 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+
+## v10.0.4 — April 20, 2026
+
+### Telegram Integration
+- **Fixed**: Safe Mode approval flow broken since v9.x. Tool approvals from Telegram now correctly trigger the approval prompt and execute on your "yes" response (GitHub #77)
+- **Fixed**: Telegram bot no longer requires opening the chat page after app launch to come online. Bot spawns automatically 3 seconds after server ready (GitHub #78)
+
+### Provider Presets
+- **Added**: Minimax, Cloudflare Workers AI, and Nvidia NIM as first-class provider presets with pre-filled endpoints. No more manual Custom OpenAI-Compatible configuration needed for these (GitHub #76)
+- **Added**: "Show only active" toggle in the Providers list to hide unused providers
+
+### Chat & UX
+- **Added**: Response time display on assistant messages — see how long each response took (GitHub #61)
+- **Added**: Global hotkey `Cmd+Shift+H` (macOS) / `Ctrl+Shift+H` (Windows/Linux) to toggle Desktop Buddy visibility. Handy for fullscreen video (GitHub #60)
+- **Improved**: Settings search now covers more sections, handles accents (é matches e, ä matches a), and has better keyword coverage in German/Spanish/French/Russian (GitHub #59)
+- **Improved**: Fallback provider banner reworded for clarity with a details modal explaining why the fallback activated and how to fix the primary (GitHub #70)
+
+### Export & Remote Access
+- **Fixed**: Export via Tailscale or remote browser access no longer returns a corrupted HTML file instead of a ZIP. Content-Type headers, MIME validation, and error handling properly hardened across the HTTP route
+- **Unchanged**: Native Electron Export remains the same, ~13MB ZIP with manifest and `.skales-data/` — no regression
+
+### Email
+- **Improved**: Outlook/Gmail/Yahoo IMAP authentication errors now explain the App-Specific Password / OAuth2 requirement (Microsoft disabled Basic Auth in 2022) instead of showing a generic "auth failed" message
+
+### Build & Infrastructure
+- **Fixed**: `build-info.json` now correctly reports the current version. `scripts/build-id.js` is now invoked as the first step in `scripts/release-build.sh` on every release (GitHub #79)
+
+### Locales
+- All 12 locales (en, de, es, fr, hr, ja, ko, pt, ru, tr, vi, zh) updated with v10.0.4 strings — informal register maintained
+
+---
+
 ## v10.0.3 — Stability (April 18, 2026)
 
 ### Bug Fixes
