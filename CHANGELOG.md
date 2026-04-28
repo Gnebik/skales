@@ -7,6 +7,147 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
+## v10.1.0 "Design" — 2026-04-28
+
+The biggest creative update yet. Skales Studio gets a Design Tab that turns prompts into real HTML/CSS designs. Codework matures into a full autonomous coding agent. HF Spaces and MCP servers now work everywhere. Smoother animations across the app.
+
+### Studio
+
+- **Studio Design Tab** is the new first tab in Studio. Type a prompt, pick a template (Landing Page, Dashboard, Mobile Screen, Pricing, Hero, Login, Settings), get production-ready HTML + CSS + Tailwind back. Live preview iframe, palette extraction, font extraction, fullscreen preview mode (Escape to exit), inline refine drawer, recent designs dropdown. Designs persist between sessions (50 designs FIFO).
+- **Studio Image Generation revival.** HuggingFace image provider now routes through the Inference Providers Router (`router.huggingface.co`) with two-attempt fallback chain. The legacy 404 issue is fixed for SDXL, FLUX, and other models. Clear error messages on failure with provider-fallback suggestions.
+- **HTML extraction made robust** against five common LLM output variants (fenced, unfenced, with or without DOCTYPE, truncated). Smaller models that don't follow exact output format still produce usable designs.
+- **View Transitions API** for smooth tab crossfades in Studio (Chrome, Edge, Safari TP). Graceful fallback on Firefox.
+
+### Codework
+
+Codework matured significantly across the v10.0.4 to v10.1.0 cycle. It is now a full autonomous coding agent, not just a chat with file tools.
+
+- **Approval Gates.** Three new toggles: auto-approve writes, auto-approve exec, auto-approve all. Pending-approval map with `/api/codework/approve` endpoint. Conservative defaults (Review mode) for first-time users.
+- **Forbidden command denylist** expanded from 5 to 17 patterns plus 8 dangerous pipe-pairs. Common destructive operations (`rm -rf $HOME`, fork bombs, dd to disk, etc.) blocked at orchestrator level even with auto-approve enabled.
+- **Test loop with progress guardrail.** New `testCommand` field per session lets Codework run tests after each code change. After 3 consecutive test failures with no progress, the loop aborts and Codework reports back instead of grinding tokens.
+- **Preview Mode** for write operations. Write tools generate diffs that surface to the user for accept/reject before applying. New SSE events `tool_pending_write`, `tool_write_accepted`, `tool_write_rejected`.
+- **MCP tool consumption.** Connected MCP servers are now exposed as tools to Codework. Tool naming `mcp_<server>_<tool>`. Conservative auto-approval gating.
+- **Repository-map indexing.** Codework now builds a project-wide map (functions, classes, exports per file) cached in `.skales-backup/repo-map.json` with SHA-256 Merkle root for fast invalidation. Scales to 500+ files. Regex-based parser (tree-sitter AST upgrade coming in v10.2).
+- **Long-context tiers.** For huge projects, Codework adapts: full tree+keyfiles+repomap under 50 files, tree+repomap up to 500, directory-only+repomap above 500.
+- **Token usage tracking.** Live token counter shown in Codework with indigo pill, updates per LLM call via new `usage` SSE event.
+- **Commit-message generator.** New helper drafts commit messages from staged changes following Conventional Commits style.
+
+### Cross-tool integration
+
+- **HF Spaces and MCP everywhere.** Activated HF Spaces and connected MCP servers are now usable from Chat, Codework, AND Studio. Add a Space once, use it anywhere.
+- **Active Tools Across Skales** panel in Settings shows which tools are available in which surfaces (Chat / Codework / Studio).
+- **Studio HF Spaces invocation endpoint** (`/api/studio/space-invoke`) lets Studio invoke any active Space directly.
+
+### Lio AI
+
+- **Recursive project snapshot.** Lio AI now builds a complete file map of your project on each plan/build cycle (max depth 10, max 2000 files). Better context awareness for multi-file changes.
+- **Plan context** assembled from project structure + chat history for higher-quality plans.
+
+### Chat
+
+- **Token-pruning heuristic** for short queries widened to 120 characters (was 80). Queries like "Explain X with examples" keep their tools instead of being stripped to plain chat.
+- **gpt-tokenizer integration.** Exact token counting for context-budget calculations across providers (Groq 12k, Mistral 30k, Cerebras 32k, SambaNova 16k). Tools are pruned only when they actually exceed provider TPM ceilings.
+- **Smoother streaming token rendering** via batched requestAnimationFrame updates.
+- **Update toast localized** in all 12 locales with version interpolation. Update detail page renders the actual changelog from `latest.json`.
+
+### Stability
+
+- **JSON I/O hardened.** All JSON reads/writes across 65+ files migrated to `readJsonSafe`/`writeJsonSafe` helpers. Handles malformed JSON, missing files, BOM characters, partial writes.
+- **Hierarchy clarity in Organizations.** Orchestrator override fix for the Person/Agents/Organization confusion that affected multi-agent setups.
+- **Namesake trope removed** from all 12 locales (was a phrase pattern that drifted across localizations).
+- **Codework session sidebar** active-state correctly handles trailing slashes (no more two-row highlights).
+- **createSession testCommand wiring** fixed: the field now persists correctly into session metadata.
+- **Delete session prompt** now properly localized in all 12 languages.
+
+### Internal
+
+- **Codework runtime extracted.** `runCodeworkAgentLoop` and `buildCodeworkSystemPrompt` moved from `/api/codework/run/route.ts` (488 LOC) to `actions/codework.ts` (route now 102 LOC). Cleaner separation, easier to reuse.
+- **LIO_IGNORE_NAMES expanded** from base list to 25 entries covering more build artifact directories.
+- **Codework dogfood `.skales-backup`** directory cleaned and gitignored.
+- **Stale `/lio` and `/lizard`** slash-command references removed from chat system prompts.
+- **Debug log noise** from token-bloat and tool-prune instrumentation removed.
+- **Auto-updater** continues stable since v10.0.3.
+
+### Mobile
+
+- **Outbox foreground sync** via AppState listener. Pending messages flip to "failed" immediately when app resumes (was up to 10 seconds of background drift before).
+- **Periodic 10-second sweep** keeps outbox state fresh during active chat use.
+
+### Landing
+
+- **Migration sources** in v902 Canvas Office blog and Migration Importer feature now mention OpenClaw, Hermes, and Cherry Studio alongside ChatGPT/Claude/Copilot/Gemini.
+- **Three new feature blocks**: ComfyUI (local image generation), HF Inference Providers (200+ models), DeepSeek V4 (1M context, agent-tuned).
+
+### Note on Lio AI export from Studio
+
+The "Open in Lio AI" export from the Studio Design Tab was investigated and removed during the V102 dev cycle. Lio AI's `/code` page does not currently consume `?project=<id>` URL params, and Lio AI is fundamentally a different workflow (architect-reviewer-build loop) than Studio Design's static HTML iteration. Lio AI is left 100% untouched. Use the Download HTML button instead.
+
+
+## v10.0.4 — April 20, 2026
+
+### Telegram Integration
+- **Fixed**: Safe Mode approval flow broken since v9.x. Tool approvals from Telegram now correctly trigger the approval prompt and execute on your "yes" response (GitHub #77)
+- **Fixed**: Telegram bot no longer requires opening the chat page after app launch to come online. Bot spawns automatically 3 seconds after server ready (GitHub #78)
+
+### Provider Presets
+- **Added**: Minimax, Cloudflare Workers AI, and Nvidia NIM as first-class provider presets with pre-filled endpoints. No more manual Custom OpenAI-Compatible configuration needed for these (GitHub #76)
+- **Added**: "Show only active" toggle in the Providers list to hide unused providers
+
+### Chat & UX
+- **Added**: Response time display on assistant messages — see how long each response took (GitHub #61)
+- **Added**: Global hotkey `Cmd+Shift+H` (macOS) / `Ctrl+Shift+H` (Windows/Linux) to toggle Desktop Buddy visibility. Handy for fullscreen video (GitHub #60)
+- **Improved**: Settings search now covers more sections, handles accents (é matches e, ä matches a), and has better keyword coverage in German/Spanish/French/Russian (GitHub #59)
+- **Improved**: Fallback provider banner reworded for clarity with a details modal explaining why the fallback activated and how to fix the primary (GitHub #70)
+
+### Export & Remote Access
+- **Fixed**: Export via Tailscale or remote browser access no longer returns a corrupted HTML file instead of a ZIP. Content-Type headers, MIME validation, and error handling properly hardened across the HTTP route
+- **Unchanged**: Native Electron Export remains the same, ~13MB ZIP with manifest and `.skales-data/` — no regression
+
+### Email
+- **Improved**: Outlook/Gmail/Yahoo IMAP authentication errors now explain the App-Specific Password / OAuth2 requirement (Microsoft disabled Basic Auth in 2022) instead of showing a generic "auth failed" message
+
+### Build & Infrastructure
+- **Fixed**: `build-info.json` now correctly reports the current version. `scripts/build-id.js` is now invoked as the first step in `scripts/release-build.sh` on every release (GitHub #79)
+
+### Locales
+- All 12 locales (en, de, es, fr, hr, ja, ko, pt, ru, tr, vi, zh) updated with v10.0.4 strings — informal register maintained
+
+---
+
+## v10.0.3 — Stability (April 18, 2026)
+
+### Bug Fixes
+- **Bonjour/mDNS Collision** — instance name now includes PID (`Skales-<hostname>-<pid>`); multiple Skales instances on the same machine no longer shadow each other in swarm discovery
+- **Multi-Agent Dispatch Toast** — completion notification was silently dropped after all subtasks finished; now fires a purple 🦁 toast with job title + subtask count (7 s display duration)
+- **Update Page i18n** — "Later" button showed raw key `update.later` instead of translated text; `later` key added to all 12 locale files
+- **Ollama Small-Model Warning** — settings panel now shows an orange warning when a known small model (≤3B params) is selected with `Max tools > 0`, advising the user to reduce tools or switch to a larger model
+- **fal.ai Studio Hang** — video generation polled a manually constructed status URL that broke when fal.ai changed their queue URL structure; client now uses `status_url` / `response_url` from the submit response with fallback to constructed URLs
+- **Codework UI Lag** — blank activity panel during 1–2 s SSE startup gap replaced with an optimistic "Starting session…" phase entry so the UI never appears frozen
+
+---
+
+## v10.0.2 — 2026-04-18
+
+### Fixed
+
+- **Tool Filter Regression (critical).** Disabled the context-aware tool filter introduced in v9.2.1 which was silently dropping core tools (`send_telegram_message`, `write_file`, `create_directory`, and others) based on keyword matching. This was the root cause of the widespread "Unknown tool" errors users reported after v10.0.0. All tools are now available in every conversation until a safer allow-list approach lands in v10.1.
+- **Export Dialog "Source path not allowed".** The `copy-file` IPC handler now accepts `os.tmpdir()` as a valid source path. In v10.0.1 the export bundle ZIP was written to the OS temp directory, but the handler's whitelist only permitted `DATA_DIR`, so exports failed silently.
+- **Multi-Step Exit Guard.** The ReAct loop now only exits when the model returns zero tool calls. Previously, response text emitted alongside tool calls (e.g. "let me continue with...") was incorrectly interpreted as an exit signal, breaking legitimate multi-step tasks.
+
+### Improved
+
+- **`SAME_TOOL_NAME_HARD_CAP` raised 3 → 15.** The per-turn cap on how often a single tool name can be called was too low to support normal bulk operations (creating 5+ folders, writing 10 files). Infinite loops with identical arguments are still caught by stall detection (2 identical calls) and the dedup tracker (2 identical args), so this only affects legitimate bulk work.
+- **Progress-Speak Auto-Continue.** When a model made tool calls in previous iterations but then stops with short progress-style text ("let me continue", "jetzt erstelle ich die restlichen", "remaining", etc.), the orchestrator now automatically re-prompts it to finish via tool calls instead of exiting the loop. Mitigates Sonnet 3.7's mid-task pause behavior on bulk operations.
+
+### Known Issues
+
+- Sonnet 3.7 may still pause on 5+ item bulk tasks despite auto-continue. Use Claude Opus 4, Sonnet 4, or Minimax for guaranteed single-shot bulk execution.
+- Minimax models may emit tool calls as JSON text in chat instead of real function calls for some prompts.
+- Codework UI may appear frozen for 1–2 seconds before streaming catches up; backend is working.
+- Multi-Agent Dispatch toast notification is not currently firing; check the Tasks tab for progress.
+
+---
+
 ## v10.0.1 — Hotfix (April 17, 2026)
 
 ### Critical Fixes

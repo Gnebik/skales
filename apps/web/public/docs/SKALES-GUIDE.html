@@ -361,7 +361,7 @@
       <div class="logo-mark">S</div>
       <div>
         <div class="logo-text">Skales</div>
-        <div class="logo-version">v10.0.1 User Guide</div>
+        <div class="logo-version">v<span data-skales-version>10.1.0</span> User Guide</div>
       </div>
     </a>
 
@@ -444,7 +444,7 @@
 
     <!-- Hero -->
     <div class="hero">
-      <div class="hero-badge">📖 Official Documentation · v10.0.1 "Closing the Gap"</div>
+      <div class="hero-badge">📖 Official Documentation · v<span data-skales-version>10.1.0</span> "Design"</div>
       <h1>Skales <span>User Guide</span></h1>
       <p>Your personal AI operating system. Chat, automate, create — all running locally on your machine.</p>
     </div>
@@ -905,7 +905,7 @@
 
     <!-- v10 "Closing the Gap" highlights -->
     <section id="v10-highlights">
-      <h2><span class="icon">🎉</span> What&rsquo;s New in v10 <span class="badge badge-new">Closing the Gap</span></h2>
+      <h2><span class="icon">🎉</span> What&rsquo;s New in v10.0.x <span class="badge badge-new">v10.0.x</span></h2>
       <p>v10 connects Desktop with the brand-new <strong>Skales Mobile</strong> companion, brings voice to every conversation, adds the <strong>fal.ai LTX-2.3</strong> video model to Studio, and makes the entire chat surface feel buttery-smooth.</p>
       <div class="card-grid">
         <div class="card"><div class="card-title">📱 Skales Mobile (Android)</div><div class="card-desc">Pair your phone via QR; it gets the full 139+ tools of this desktop through an end-to-end encrypted relay. Or run standalone with 27 native mobile tools.</div></div>
@@ -1704,11 +1704,31 @@
     </section>
 
     <footer>
-      <span>Skales v10.0.0 — © 2024–2026 Mario Simic — BSL 1.1</span>
+      <span>Skales v<span data-skales-version>10.1.0</span> — © 2024–2026 Mario Simic — BSL 1.1</span>
       <a href="https://skales.app">skales.app</a>
     </footer>
 
   </main>
 </div>
+  <script>
+  // Fetch live version from skales.app/latest.json
+  // Fallback stays on hardcoded value in markup if fetch fails
+  (function() {
+    fetch('https://skales.app/latest.json', { cache: 'no-store' })
+      .then(function(r) { return r.ok ? r.json() : null; })
+      .then(function(data) {
+        if (\!data || \!data.version) return;
+        document.querySelectorAll('[data-skales-version]').forEach(function(el) {
+          el.textContent = data.version;
+        });
+        if (data.changelog) {
+          document.querySelectorAll('[data-skales-changelog]').forEach(function(el) {
+            el.textContent = data.changelog;
+          });
+        }
+      })
+      .catch(function() { /* silent, fallback stays */ });
+  })();
+  </script>
 </body>
 </html>
