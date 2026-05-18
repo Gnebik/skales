@@ -1,4 +1,29 @@
-# Skales — Linux Installation Guide (Beta)
+# Skales — Linux Installation Guide
+
+## Ubuntu 24.04+ Sandbox Fix
+
+On Ubuntu 24.04 and newer, the AppImage may fail to launch with:
+
+setuid_sandbox_host.cc(158)] The SUID sandbox helper binary was found, but is not configured correctly.
+
+This is caused by AppArmor restricting unprivileged user namespaces by default plus /tmp being mounted nosuid. Two workarounds:
+
+**Option A — Disable AppArmor restriction (persistent, system-wide):**
+
+echo "kernel.apparmor_restrict_unprivileged_userns=0" | sudo tee /etc/sysctl.d/60-apparmor-namespace.conf
+sudo sysctl -p /etc/sysctl.d/60-apparmor-namespace.conf
+
+**Option B — Run without sandbox (per-launch, less secure):**
+
+./Skales-x86_64.AppImage --no-sandbox
+
+Older Ubuntu (22.04 and earlier) runs the AppImage without these steps.
+
+
+------
+
+
+# Skales — Linux Installation Guide (old - v7)
 
 > **Linux support is in Beta.** Core features work well on major distros. See Known Issues below for edge cases.
 
