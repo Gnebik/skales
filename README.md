@@ -285,7 +285,7 @@ Like Spotify Wrapped for your AI. Auto-generates every Monday. Activities, top t
 
 > 🪟 **Windows:** EXE installer. Signed binaries coming soon.
 
-> 🐧 **Linux:** AppImage. `chmod +x` and run.
+> 🐧 **Linux:** `.deb` for Debian / Ubuntu / Mint (keeps Chromium sandbox on under Ubuntu 24.04+), AppImage for everything else. See [INSTALL-LINUX.md](./INSTALL-LINUX.md) for the Ubuntu 24.04+ AppArmor notes.
 
 > 📱 **Android:** Skales Mobile app — pair to your Desktop via QR, or run standalone. Submitted to Play Store (beta, closed testing).
 
