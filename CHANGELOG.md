@@ -6,6 +6,66 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## v10.3.3
+
+A focused hotfix release. The MCP-button fix that v10.3.1 and v10.3.2 each tried to land finally catches on every setup. The regression where assistant replies appeared trapped inside the Tool Results disclosure is gone. Local 128K+ endpoints stop feeling reset after a few tool-heavy turns. And Discover gets a focused upgrade, fully backwards compatible with older clients.
+
+### Fixed
+
+- **Edit a configured MCP server straight from Settings.** Each server row in Settings now carries an explicit Edit button next to Test, Toggle, and Remove. Clicking it opens the form pre-filled with the server's current name, command, args, and environment variables. The MCP page Edit link still works the same way for users who prefer that path. Every row icon also carries a tooltip and screen-reader label, translated into all 12 locales.
+
+- **MCP status badge updates immediately after a successful Test.** A green Test result used to leave the badge stuck on "stopped" until a chat turn happened to wake the connection up. The badge now flips to "connected (N tools)" on the very next status refresh.
+
+- **Environment variable values are readable by default.** They used to render as password dots, which made copying tokens out of a vault painful. They are now plain text with a per-row Show / Hide toggle for screen-sharing situations.
+
+- **Assistant prose no longer hides inside the Tool Results disclosure.** When an assistant turn had both an answer and tool calls, the answer used to render inside the collapsed disclosure, so reading the reply required clicking the header first. The prose renders above the disclosure now, the way it always did before this regression.
+
+- **Local 128K+ endpoints stop feeling reset after a few tool-heavy turns.** When Skales had no live context-length info for a model (community endpoints, custom OpenAI-compatible servers, freshly added Ollama models), it used to clamp them to a conservative 32K, which triggered auto-compression far too aggressively. The floor is higher now, and known community families (kimi, qwen, glm, deepseek, minimax, step) are recognised so they default to their real 128K+. User overrides under Settings &gt; Override Model Limits still win on top.
+
+- **Override Model Limits respects every Custom Provider slot.** Users running multiple Custom Provider slots can set one override under the canonical "custom" entry and it now applies to all of them unless an explicit per-slot row exists. Case-insensitive model-id matching too, so a tiny capitalisation difference between your override row and what the server reports stops silently dropping the value.
+
+- **Skales can read its own past conversations now.** When you ask the assistant in natural language "what did we discuss about X yesterday?" or "find that chat where I planned the Vienna trip", it can now pull snippets directly from your saved sessions (including chats imported from ChatGPT / Claude / etc.) and answer instead of falling back to memory only. The /search slash command is unchanged: it stays a fast local text scan, the way Spotlight or Ctrl+F work.
+
+- **Ollama "Max tools" slider labels line up with the slider value.** Setting the slider to 25 used to land it between two label positions that pretended to be "15" and "35" but were actually placed elsewhere. Labels now sit at their true values. Visual only, behaviour unchanged.
+
+- **Jina Reader returns the full extracted page.** jazzroutine reported that Jina was clipping page content compared to AnythingLLM / Super Agent Party against the same endpoint. Considerably more of Jina's output is now passed through, so summarising a long article works the way the tool description promised.
+
+- **The /projects autocomplete shows a real description.** Typing /p used to surface the raw translation key in the suggestion. Translated across every language.
+
+### Added
+
+- **Recent group in the chat-header model picker.** The picker leads with a small "Recent" section showing the last five models you actually sent with, ahead of any curated list. Locally installed Ollama models and custom model ids land at the top of the dropdown without needing to be in any built-in catalog. A Clear button empties the list.
+
+### Discover gets a focused upgrade
+
+Backwards compatible: older Skales clients keep rendering polls as plain-text posts, pinned posts as normal posts, hashtags as raw text. No old client crashes, nothing disappears for anyone.
+
+**Privacy disclosure with explicit consent.** The Join Discover wizard now shows a small paragraph under the tag input explaining exactly what is stored on the Skales server (the tag you chose and a one-time random ID, not your name, email, or device fingerprint), and a checkbox you have to tick before the Next button enables. The shorter privacy line on the final step has been rewritten to match what is actually stored, not the vague "no personal data" copy from before.
+
+**Polls.** Posts marked as polls render with a question and up to eight option buttons. Click an option to vote. One vote per identity per poll. Expired polls render as Closed and the buttons disable.
+
+**Rename your tag, or reset your identity entirely.** Settings &gt; Discover gets two new buttons next to Edit Profile and Leave Discover. Rename Tag changes your gamertag in place, your existing posts and votes stay attached. Reset Identity wipes both the local copy and the server-side row, so you can rejoin under a fresh name. The rename uses an inline form so the underlying Electron prompt limitation does not block the flow.
+
+**Activity tab.** A new chip in the Discover filter row opens an inbox grouped into Mentions, Replies, and From Admin. Auto-refreshes every minute while open. Click an unread item to mark it read.
+
+**Hashtags.** Inline #tags in any post are clickable now. Click one to filter the feed to posts that carry that tag. The filter banner at the top has a Clear button. Works alongside the existing author filter.
+
+**Pinned-by-admin posts.** Posts the Skales admin flags as pinned sort to the top of the feed with a small Pinned badge.
+
+**Force-rebrand handling.** If the Skales admin flags your tag (impersonation, offensive content, etc.), Skales wipes your local identity, shows a toast, and routes you back to onboarding so you pick a new tag. Your existing posts and votes are not deleted, only the tag is reset.
+
+**Smaller Discover polish.** Author avatars get a soft pulse when the post is fresh (under five minutes old). The empty state now offers three quick-jump buttons instead of the dry "Be the first to post!" line. The compose box placeholder cycles through five short prompts when empty so the box never feels stale. Translated across all 12 locales.
+
+### Smoke-test follow-ups
+
+- **Gemini 2.0 family removed.** The 2.0-flash family was deprecated upstream. Picker entries replaced with 2.5-flash, 2.5-pro, and the 3-preview models. Existing settings that point at 2.0-flash auto-migrate forward on next load.
+
+- **Settings, Memory Mode, and slash-command navigation no longer trigger a full app reload.** Clicking Open Settings on a toast, the Memory Mode badge in the chat header, and the /settings, /discover, /studio, /codework, /wordpress slash commands all navigate inside the app the way every other internal link does.
+
+### Deferred
+
+Thread modal (click a reply quote to see the full thread), user profile modal (click a tag to see bio plus recent posts), and post scheduling all stay parked. They depend on additional server-side work and are not in this release.
+
 ## v10.3.2
 
 A maintenance release in the same spirit as v10.3.1 — the things that already worked now work the way the screens promised. Eleven tracked bugs squashed across MCP, providers, importer, packaging docs, and locales.
