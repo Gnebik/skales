@@ -6,6 +6,45 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## Lazyload (v10.3.5)
+
+The big shift this release is that chat work no longer lives and dies with the page you are looking at. Plus a lighter prompt on smaller models, a one-click memory mode, and the usual round of fixes.
+
+### Added
+
+- **Background tasks.** Before, a chat run was tied to the page: navigate away or close the window and it died with the view. Now you can start something, switch to another view, or close and reopen the window, and it keeps running. When you come back, the result is waiting for you.
+
+- **Tasks stay paused only when they should.** A run now pauses only when it genuinely needs your approval, not just because you happened to navigate away. Approval requests survive navigation, so nothing gets stranded or lost.
+
+- **Get notified when work finishes.** When a background task completes while you are on another page, you get a notification with sound and a marker on the chat in the sidebar, so you know it is ready without having to sit and watch.
+
+- **Memory mode in one click.** The memory mode button in the chat header used to be a label you could not act on directly. It now cycles through all three modes with a single click, each with its own clear colour, so you can adjust it without opening settings.
+
+### Changed
+
+- **Images you send stay visible.** Before, an attached image collapsed to a plain placeholder once it was sent. Now it shows as a thumbnail in your message and stays there, even after a reload. Click to open the full image.
+
+- **Leaner on smaller models.** Skales now loads its capabilities and feature details on demand instead of carrying all of them in the prompt at all times. The prompt stays lighter, which helps especially on smaller and local models, without losing any awareness of what Skales can do.
+
+### Fixed
+
+- **Smoother scrolling when switching between conversations.** Opening one conversation out of another no longer overshoots before settling.
+
+- **Imported chats are clearly marked by source.** Chats migrated from another tool now carry a badge in your history naming where they came from, so native and imported conversations are easy to tell apart.
+
+- **Stop and killswitch respond immediately.** Both now fire instantly, even in the middle of a running task, instead of waiting their turn.
+
+
+## v10.3.4
+
+Hotfix session.
+
+### Fixed
+
+- **macOS Apple Silicon installer launched straight into "Server files missing — please reinstall Skales."** The v10.3.3 arm64 build shipped without the Next.js standalone server bundled. Both Mac architectures are now packed from a single shared build pass that cannot diverge.
+
+- **Left sidebar "More" menu rendered empty on smaller windows (most visibly on Windows).** Clicking the three dots opened a popover whose content was CSS-clipped to zero visible width by an `overflow-x-hidden` ancestor. The popover now sits outside the scroll container and renders its items as intended.
+
 ## v10.3.3
 
 A focused hotfix release. The MCP-button fix that v10.3.1 and v10.3.2 each tried to land finally catches on every setup. The regression where assistant replies appeared trapped inside the Tool Results disclosure is gone. Local 128K+ endpoints stop feeling reset after a few tool-heavy turns. And Discover gets a focused upgrade, fully backwards compatible with older clients.
