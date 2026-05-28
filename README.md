@@ -187,10 +187,11 @@ Connect to any WordPress site with the [Skales Connector Plugin v1.2.0](https://
 Your personal AI workspace. A deep onboarding interview (15 questions, 4 phases) learns your work style, goals, and preferences. Based on your answers, Playground suggests personalized Spaces — interactive mini-apps built specifically for you. Spaces persist data locally, connect to AI, and can be shared on the Discover Feed (personal data auto-removed). Glassmorphism UI with animated mesh background.
 
 ### AIPointer ⦿
-<p align="center">
-  <a href="https://youtu.be/NRIlG32hvLg">
-    <img src="https://img.youtube.com/vi/NRIlG32hvLg/maxresdefault.jpg" alt="AIPointer ⦿ Demo Video" width="100%" />
-  </a>
+<p align="left">
+<img width="800" height="450" alt="AIPointer screenshot" src="https://github.com/user-attachments/assets/3d174dda-b961-4ce8-8474-e05e07e27009" />
+
+<p align="left"><a href="https://youtu.be/NRIlG32hvLg">AIPointer ⦿ Demo Video</a></p>
+    
 </p>
 A cursor-anchored quick-ask AI overlay, built in. Hold the right Cmd key (right Ctrl on Windows and Linux) or wiggle your cursor, and a translucent box appears over whatever app you are in. Type or speak a question about what you are pointing at. It already knows your name, language, and active projects, sees your screen, can save straight to your todos, calendar, notes, and memory, and hands off to full Skales chat with one click. Replaces the old Spotlight bar. Enable it in Settings → Appearance → AIPointer ⦿.
 
