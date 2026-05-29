@@ -319,13 +319,9 @@ Like Spotify Wrapped for your AI. Auto-generates every Monday. Activities, top t
 
 **Maintainer:** Mario Simic (solo founder, Vienna, Austria).
 
-**Co-Pilot:**
-<p align="left">
-    <a href="https://github.com/NikiKeyz"><img src="https://github.com/NikiKeyz.png" width="56" height="56" alt="NikiKeyz" style="border-radius:50%" /></a>
-</p>
-
 **Top Contributors & Debuggers:**
 <p align="left">
+        <a href="https://github.com/NikiKeyz"><img src="https://github.com/NikiKeyz.png" width="56" height="56" alt="NikiKeyz" style="border-radius:50%" /></a>
     <a href="https://github.com/jazzroutine"><img src="https://github.com/jazzroutine.png" width="56" height="56" alt="jazzroutine" style="border-radius:50%" /></a>
     <a href="https://github.com/xITmasterx"><img src="https://github.com/xITmasterx.png" width="56" height="56" alt="xITmasterx" style="border-radius:50%" /></a>
 </p>
