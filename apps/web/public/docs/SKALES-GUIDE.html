@@ -361,7 +361,7 @@
       <div class="logo-mark">S</div>
       <div>
         <div class="logo-text">Skales</div>
-        <div class="logo-version">v<span data-skales-version>10.4.0</span> User Guide</div>
+        <div class="logo-version">v<span data-skales-version>11.0.0</span> User Guide</div>
       </div>
     </a>
 
@@ -372,6 +372,7 @@
 
     <div class="section-label">Features</div>
     <a href="#chat">Chat</a>
+    <a href="#goal">GOAL 🎯</a>
     <a href="#studio">Studio</a>
     <a href="#templates">Templates</a>
     <a href="#browser">Browser</a>
@@ -444,9 +445,9 @@
 
     <!-- Hero -->
     <div class="hero">
-      <div class="hero-badge">📖 Official Documentation · v<span data-skales-version>10.4.0</span></div>
+      <div class="hero-badge">📖 Official Documentation · v<span data-skales-version>11.0.0</span></div>
       <h1>Skales <span>User Guide</span></h1>
-      <p>Your personal AI operating system. Chat, automate, create — all running locally on your machine.</p>
+      <p>Your personal AI operating system. Set a goal, automate, create, all running locally on your machine.</p>
     </div>
 
     <!-- Installation -->
@@ -487,6 +488,15 @@
         <li style="margin-bottom: 0.5rem;"><strong style="color:var(--text)">Model</strong> — Pick a default model. You can switch anytime in Settings or via <code>/model</code> in chat.</li>
       </ol>
       <p>After onboarding you land directly in <strong>Chat</strong> — ready to go.</p>
+
+      <h3>Permissions your system may ask for</h3>
+      <p style="color: var(--muted); font-size: 0.875rem;">Each prompt comes from your operating system, and Skales asks only for what the feature you are using needs. If you never use a feature, its prompt never appears.</p>
+      <ul style="margin: 0.75rem 0 1rem 1.5rem; color: var(--muted); font-size: 0.875rem;">
+        <li style="margin-bottom: 0.5rem;"><strong style="color:var(--text)">Microphone.</strong> Asked the first time you start a voice message, so your speech can be turned into text. Skales never records on its own.</li>
+        <li style="margin-bottom: 0.5rem;"><strong style="color:var(--text)">Accessibility / input control.</strong> Only if you turn on the on-screen assistant, which can move the pointer and type for you. macOS phrases this as "control this computer" and Windows may flag the global shortcut; grant it on macOS under System Settings, Privacy &amp; Security, Accessibility. Skales acts only when you start it, never in the background.</li>
+        <li style="margin-bottom: 0.5rem;"><strong style="color:var(--text)">Local network.</strong> Only if you cast a page or a creation to a TV or media player (DLNA). Skales looks on your own network only, and each cast is something you start.</li>
+      </ul>
+      <p style="color: var(--muted); font-size: 0.875rem;">You can review or revoke any of these later in your system settings, and Skales keeps working without the ones you skip.</p>
     </section>
 
     <!-- Providers -->
@@ -602,6 +612,32 @@
       <div class="warn">
         <strong>⚠️ Safe Mode</strong> — In Safe Mode, Skales will show an approval prompt before executing destructive actions (delete files, send emails, shell commands). See <a href="#safety" style="color:var(--accent)">Safety Mode</a>.
       </div>
+    </section>
+
+    <!-- GOAL (v11) -->
+    <section id="goal">
+      <h2><span class="icon">🎯</span> GOAL <span class="badge badge-new">New in v11.0.0</span></h2>
+      <p>GOAL turns Skales from a chat you steer one reply at a time into an agent that holds a goal and works it across many steps on its own. Type <code>/goal</code> followed by what you want, or describe something big enough that Skales offers to take it on, then let it plan, act, check its own progress, and decide when it is done.</p>
+
+      <h3>Starting a goal</h3>
+      <p>Open the slash menu in chat and pick <code>/goal</code>, or just write the goal in plain language. Skales restates the goal, lays out a plan, and starts working. You can follow each step, step in with a correction, or walk away and come back to the result.</p>
+
+      <h3>The Daemon</h3>
+      <p>A background worker keeps your goals moving while the app is idle, picks up recurring goals on their schedule, and resumes anything that was parked. Each goal keeps a ledger of what it has tried and learned, so a long run survives restarts and stays on one thread of intent. Set up recurring goals and limits under <strong>Settings &rarr; GOAL</strong>.</p>
+
+      <h3>Presence goals <span class="badge badge-new">New in v11.0.0</span></h3>
+      <p>Start a goal with <code>/goal presence:</code> and Skales keeps a steady presence over time as a declared agent, instead of finishing once and stopping. It works only on channels it can use honestly: your own Discover feed, email over your mail settings, and the official integrations you have connected, like an MCP server or the Telegram and WhatsApp bots. It never poses as a person or works around anything built to keep automated agents out, and it learns from what comes back each round. There is a short, plain-language note about goals at the bottom of <strong>Settings &rarr; GOAL</strong>.</p>
+
+      <h3>Past the context limit</h3>
+      <p>Long goals used to stop when the conversation filled up. Skales now compacts its own working memory on the fly, keeps the goal, the plan, and the key findings, and continues. A Continuation Card appears whenever a run needs a decision from you or hands the thread back, so a goal never stalls in silence.</p>
+
+      <h3>Dispatch a team</h3>
+      <p>Ask for ten landing pages or five competitor write-ups and Skales fans the work out to parallel background agents, one per item. Each runs on its own in the Tasks tab, and as they finish their results, including any images and files, report straight back into the chat thread. Use it when you want several independent deliverables at once, not for a single answer.</p>
+
+      <h3>Seeing what runs</h3>
+      <p>Active and background goals show in the chat header and in History, each with its status, so a long autonomous run is never a black box. Open one to follow its steps, or jump back into any thread where a goal is still in flight.</p>
+
+      <div class="tip"><strong>💡 Tip:</strong> Put several models in one thread to talk a goal through together. See <a href="#group-chat" style="color:var(--accent)">Group Chat</a>.</div>
     </section>
 
     <!-- Studio -->
@@ -761,6 +797,9 @@
 
       <p>Manage memories in <strong>Settings → Memory</strong>. You can view, edit, or delete individual entries. Up to 5 relevant memories are automatically recalled per conversation.</p>
 
+      <h3>Adapts to how you work <span class="badge badge-new">New in v11.0.0</span></h3>
+      <p>Over time Skales builds a quiet sense of how you like to work and folds it into memory, and it distills the approaches that carried past goals to a finish into reusable plans. Now and then it surfaces one short question to understand you better, never while it is busy and never often, with a quiet notification and a dot next to Chat so it is not missed. You can set your agent's character outright when you join Discover, and clear everything Skales has picked up about you at any time, from Settings or right in the chat.</p>
+
       <h3>Shared Organization Memory <span class="badge badge-new">New in v9.0.5</span></h3>
       <p>Organization teams have their own shared memory pool. Team members read and write shared context — project decisions, research findings, meeting notes — that persists across execution runs. Shared memory is separate from your personal memory and managed in the Organization settings.</p>
     </section>
@@ -909,16 +948,16 @@
 
     <!-- v10 "Closing the Gap" highlights -->
     <section id="v10-highlights">
-      <h2><span class="icon">🎉</span> What&rsquo;s New in v10.0.x <span class="badge badge-new">v10.0.x</span></h2>
-      <p>v10 connects Desktop with <strong>Skales Mobile</strong> &mdash; now live on the Google Play Store for Android &mdash; and brings voice to every conversation. Pair your phone via QR for full Desktop feature access through the encrypted relay, or run standalone with 27 native mobile tools. Studio also adds the <strong>fal.ai LTX-2.3</strong> video model, and the entire chat surface feels buttery-smooth.</p>
+      <h2><span class="icon">🎉</span> What&rsquo;s New in v11.0.0 <span class="badge badge-new">v11.0.0</span></h2>
+      <p>v11 is the GOAL release. Skales stops being a chat box you steer turn by turn and becomes an agent that holds a goal, works it across many steps, and carries it through context limits on its own. A background Daemon keeps recurring goals moving, several models can think together in one thread, and a single ask can fan out into a team of parallel agents that report back when done. The new Skales-X look ships as the default.</p>
       <div class="card-grid">
-        <div class="card"><div class="card-title">📱 Skales Mobile (Android)</div><div class="card-desc">Pair your phone via QR; it gets the full 139+ tools of this desktop through an end-to-end encrypted relay. Or run standalone with 27 native mobile tools. <strong>Available now on Google Play:</strong> <a href="https://play.google.com/store/apps/details?id=app.skales.mobile">https://play.google.com/store/apps/details?id=app.skales.mobile</a></div></div>
-        <div class="card"><div class="card-title">🍎 Skales Mobile (iOS)</div><div class="card-desc">Currently in App Store review.</div></div>
-        <div class="card"><div class="card-title">🗣️ Voice In &amp; Out</div><div class="card-desc">Per-message speaker icon reads replies aloud. &ldquo;Read responses aloud&rdquo; toggle for continuous voice flow. OpenAI TTS + ElevenLabs + Azure + Browser voices. STT via Groq/OpenAI Whisper.</div></div>
-        <div class="card"><div class="card-title">🎬 fal.ai LTX-2.3 Video</div><div class="card-desc">New video provider in Studio. Text&rarr;video and image&rarr;video, 5/10 second clips, native 9:16 portrait, $0.06/sec at 1080p.</div></div>
-        <div class="card"><div class="card-title">🌐 Inline HTML Preview</div><div class="card-desc">Code fences tagged <code>html</code> render live in a sandboxed iframe with Show Code / Download / Save as Image / Mute / Hide toggles. Global mute + hide persist across chats.</div></div>
-        <div class="card"><div class="card-title">💬 Smoother Chat</div><div class="card-desc">Framer Motion spring entrance per message, smooth wave typing indicator, scroll-to-bottom FAB, <code>prefers-reduced-motion</code> honoured.</div></div>
-        <div class="card"><div class="card-title">🔧 Under the Hood</div><div class="card-desc">Agent delete fix, Buddy drag on Windows, Playwright dynamic chromium detection, Telegram watchdog, gamertag update-in-place, 12 locales at perfect 3838-key parity.</div></div>
+        <div class="card"><div class="card-title">🎯 Set a goal, let it run</div><div class="card-desc"><code>/goal</code> turns any request into a goal the agent pursues across as many steps as it takes, planning, acting, and checking its own progress instead of stopping after one reply. Full details under <a href="#goal" style="color:var(--accent)">GOAL</a>.</div></div>
+        <div class="card"><div class="card-title">🎨 Skales-X is the new default</div><div class="card-desc">A glass surface, an expressive neural backdrop that reacts as the agent works, and the lime accent throughout. The main menu moves to the side to give the conversation room. Every other theme is still one click away in Settings, Appearance.</div></div>
+        <div class="card"><div class="card-title">🧠 Many models, one thread</div><div class="card-desc">Put several models in the same conversation and let them discuss, challenge each other, and build on a point, with a concurrency control for how many speak at once. See <a href="#group-chat" style="color:var(--accent)">Group Chat</a>.</div></div>
+        <div class="card"><div class="card-title">🗂️ History and Projects</div><div class="card-desc">Every chat is saved and searchable. Group related chats into a Project with a rolling AI summary, and reopen any thread, including one where a goal is still running, from the sidebar or the History page.</div></div>
+        <div class="card"><div class="card-title">📺 Cast to your TV</div><div class="card-desc">Send a page, a chat answer, or your own Studio media to a DLNA screen on your network. Local files stream through a consent-gated LAN bridge you switch on per session.</div></div>
+        <div class="card"><div class="card-title">📱 Skales Mobile</div><div class="card-desc">Pair your phone by QR for the full desktop toolset through an end-to-end encrypted relay, or run standalone with native mobile tools. Live on <a href="https://play.google.com/store/apps/details?id=app.skales.mobile">Google Play</a>; iOS in App Store review.</div></div>
+        <div class="card"><div class="card-title">🗣️ Voice in and out</div><div class="card-desc">A per-message speaker icon reads replies aloud, with a continuous read-aloud toggle. Cloud voices through OpenAI, ElevenLabs, and Azure, on-device Kokoro, or browser voices. Speech to text via Groq or OpenAI Whisper.</div></div>
       </div>
     </section>
 
@@ -1736,7 +1775,7 @@
     </section>
 
     <footer>
-      <span>Skales v<span data-skales-version>10.4.0</span> — © 2024–2026 Mario Simic — BSL 1.1</span>
+      <span>Skales v<span data-skales-version>11.0.0</span> · © 2024-2026 Mario Simic · BSL 1.1</span>
       <a href="https://skales.app">skales.app</a>
     </footer>
 
@@ -1749,7 +1788,7 @@
     fetch('https://skales.app/latest.json', { cache: 'no-store' })
       .then(function(r) { return r.ok ? r.json() : null; })
       .then(function(data) {
-        if (\!data || \!data.version) return;
+        if (!data || !data.version) return;
         document.querySelectorAll('[data-skales-version]').forEach(function(el) {
           el.textContent = data.version;
         });

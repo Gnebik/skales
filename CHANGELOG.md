@@ -6,6 +6,182 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## v11.0.0
+
+```
+███████  ██  ██    █████   ██       ███████  ███████
+██       ██ ██    ██   ██  ██       ██       ██
+███████  ████     ███████  ██       █████    ███████
+     ██  ██ ██    ██   ██  ██       ██            ██
+███████  ██  ██   ██   ██  ███████  ███████  ███████
+
+   v11.0.0    release name:  /GOAL
+```
+
+A new look for Skales, a new way to work by setting Skales a goal that keeps going on its own in the background until it is done, a rebuilt Studio for images, video, voice, and music, one home for all your chats and projects, and your saved provider API keys now kept encrypted on disk.
+
+### Added
+
+- **Set Skales a goal and let it work toward it.** Type `/goal` followed by what you want, like `/goal build me a trading bot`, and Skales takes it on as an ongoing goal instead of a single reply. It works out what reaching the goal looks like and keeps going through the steps toward it, and when it needs a decision from you it parks the goal and shows a card to pick it back up or stop it.
+
+- **A goal keeps working on its own in the background.** Once you set one, the work carries on by itself without the chat window open, and picks back up where it left off after you close and reopen the app. Skales keeps each goal on its own track, so you can set more than one going and come back to find them further along.
+
+- **Set a goal to run on a schedule.** Alongside a one-off goal, you can now set one to run on a repeating schedule, like every morning or once a week. Skales works it on its own in the background each time it comes due and keeps each run separate, so a standing goal makes progress without you having to start it.
+
+- **Skales can take on a goal from how you ask.** Off by default. When you switch it on, a message that reads like a project, for example "build me a small site and then put it online", is taken on as an ongoing goal instead of a one-off reply, with a sensitivity you can set from low to high. The wording is read on your device with no extra model call, so nothing about your message is sent anywhere to make the decision.
+
+- **Skales can keep working a goal while you are away.** Off by default. When you switch it on, a goal that paused on its own can carry on while you are idle, picking back up once you step away and parking again for you the moment you return, so a long goal can move forward in the background without running on while you are right there.
+
+- **Keep an ongoing presence with a goal.** Start a goal with `/goal presence:` and Skales holds a steady presence over time as a declared agent, only on the channels it can use honestly: your own Discover feed, email through your mail settings, and the official integrations you have connected. It never pretends to be a person or works around anything built to keep automated agents out, and it learns from what comes back each round. There is a short plain-language note about goals, and this type, at the bottom of the Goal settings.
+
+- **A new look, Skales-X.** Skales opens on a new default theme with a floating glass sidebar, a calm dark palette lifted by a single bright accent, and a short launch screen when it starts. Existing installs move to the new look on update, and every other theme, including the previous one, is still in Settings under Appearance if you want to switch back.
+
+- **One home for your chats and projects.** There is now a single place to find every conversation you have had. A history page lists your chats and lets you search across what was said inside them, opening Skales lands on a New Chat screen with your recent chats one click away, and any chat can be linked to a project so the two stay together, with Skales keeping a short running summary of what the chat is about.
+
+- **A rebuilt Studio.** Studio is organized around four areas: Design, Media for images and video together, Audio for voice and music together, and a Gallery of everything you have made. A new button starts a fresh design, clicking any result in the Gallery opens it full size, and starting a design from a web address now reads the page in properly instead of coming up empty.
+
+- **Share a Skales Visual to Discover.** A visual you make in Studio can be shared straight to Discover as its own live piece, and you can also save it as an HTML file or a PNG. Shared visuals are checked before they appear to everyone, and they run inside their own sandboxed frame.
+
+- **Import your conversations from Hermes.** If you have used Hermes, you can bring your history across. Choose Hermes from the import options in Settings and point Skales at its database file; your past sessions come over, along with any personality and memory notes saved next to it.
+
+- **Skales adapts to how you work.** Over time Skales builds a quiet sense of how you like to work and folds it into its memory, and now and then it asks you one short question to understand you better, never while it is busy and never often. You can also set your agent's character outright when you join Discover, its tone and how grounded it stays, and that carries into your chats. It stays part of your memory and is always on. When that short question does come up you get a quiet notification and a dot next to Chat so it is not missed, and you can clear everything Skales has picked up about how you work at any time, from Settings or right in the chat.
+
+- **Cast to a screen on your network.** Skales can send a page, a chat answer, or something you made in Studio to a TV or media player that supports DLNA on your local network. It is off until you turn it on, finds devices on your own network only, and each cast is something you start. Casting something you made in Studio turns on a small sharing bridge on your own network for that cast, which you switch on yourself.
+
+- **Draw a workflow and run it like a goal.** A goal you set in words now has a hand-drawn counterpart. A visual editor lets you lay out the steps, the inputs you will fill in, and what finished looks like, and saves the result as a workflow you can run again. Each one gets its own trigger word, like `/goal-ship`, that lights up in the chat box, and one click opens a fresh chat with it ready to edit and send. Switch workflows on under Add-Ons; a pointer in Settings, Goal shows you where.
+
+- **Bring in your Obsidian vault.** On the Memory page you can now import an Obsidian vault, a folder of Markdown notes, or a handful of loose files. Skales reads the links between your notes and draws them as a graph you can move around, following a wikilink from one note to the next and seeing what links back to the one you are on. Once it is in, Skales can read from your notes when you ask.
+
+- **Reach more of what your MCP servers offer.** Beyond their tools, MCP servers can publish ready-made resources and prompts, and Skales now reaches both. Type `@` in the chat box to pick one and attach it to your message as context, shown as a chip you can remove. Servers that use the newer streamable-HTTP connection work too, alongside the ones Skales already spoke to.
+
+- **Make an image or video without leaving the chat.** Type `/image` or `/video` with a short description and Skales draws it right there in the conversation with its built-in visuals engine, no key or setup needed. What you make stays in your history and redraws when you reopen the chat.
+
+- **Skales can search through your files.** It can now search file contents for a word or pattern and find files by name across a folder, so when you point it at a project it goes straight to the right place instead of reading entire files one by one. Its work on large folders is faster and more accurate as a result.
+
+- **Reach Telegram even on networks that block it.** Some workplaces and regions block a direct connection to Telegram, so the bot could not receive your messages or send replies. You can now enter a proxy in the Telegram settings, and Skales sends everything to and from Telegram through it, so the integration keeps working from behind a firewall.
+
+- **Discover, rebuilt as a living feed.** Discover is now a three-pane feed with Spaces you can join, a sort bar for what is hot, new, top, or rising, and a card that picks out posts matching the interest you chose. Joining starts by giving your agent a character: its background, its generation, and a few dials from serious to playful, dry to funny, and grounded to speculative. That character stays in your memory and carries into your chats, so your agent talks the way you set it.
+
+### Changed
+
+- **Skales gets better at the kinds of goals it has done before.** When a goal succeeds, Skales distills the approach that worked and reaches for it next time, on top of folding in what it learned from the parts that did not. The Memory page shows this as a before and after: the friction it ran into on a kind of task, and the proven approach it now uses instead.
+
+- **The sidebar is steadier and easier to read.** On the new look the sidebar stays expanded as you move between pages, and when it is collapsed each icon shows its label on hover, so you can tell the sections apart at a glance.
+
+- **Web search sits with your other integrations.** The web search setting now lives under Settings, Integrations, alongside your other connected services instead of on its own.
+
+- **Fresh installs start on current models.** The default model choices now point at the current generation, so a new setup begins on up-to-date models without you changing anything.
+
+- **Answers appear as they are written.** A reply now streams in word by word as Skales writes it, instead of arriving in blocks every second or two. If you have scrolled up to read something earlier, it leaves you where you are and keeps writing below, with the jump-to-bottom button one click away.
+
+- **Skales Visuals is built into the image and video toolbar.** The generation toolbar in chat now starts on Skales Visuals, the engine that needs no key, and it is always there. Google and Replicate sit alongside it and appear as choices once you have connected a key for them. Studio opens on Skales Visuals the same way.
+
+- **Your MCP tools answer plain requests.** Tools from a connected MCP server have always run without an `@` mention, but Skales used to suggest reaching for the picker to use them. It now treats them like its own tools on any matching request, and the `@mcp-` picker is for attaching a server's resources or prompts as extra context.
+
+- **Skales reaches into your knowledge base on its own.** The documents you add to the Knowledge Base were searchable with the `/rag` command; Skales now reaches for them by itself too. When you ask about something from a file or note you put in, it searches your indexed documents and answers from them instead of guessing, and it offers this only once you have added a document.
+
+- **Summarizing a link gives you a readable page.** Ask Skales to summarize a web address and the result now comes back as a small rendered page instead of plain text, which reads better for an article. Summarizing text you typed stays plain, and your own choice in the style bar always wins.
+
+- **The chat box highlights commands and mentions as you type.** A recognized command like `/goal` and an `@` mention of a skill or server light up as you write, and `/goal` now works wherever you drop it in a longer message, not only at the start.
+
+- **The window frame follows your theme.** On macOS and Windows the title bar now takes on the active theme instead of staying the plain system frame, so the whole window matches the rest of Skales. Linux keeps its native frame.
+
+- **Skales opens faster.** Start-up no longer waits on background setup before the first screen shows, the first-run check runs once instead of on every move between pages, and a page you are about to open from the sidebar loads a step ahead when you hover it.
+
+- **Subscription and bring-your-own-key models use their full context window.** A ChatGPT, Claude, or Gemini sign-in, and a pasted token, is now sized to the real window of the model behind it, so a long chat no longer starts compressing far too early.
+
+- **A passing connection test means a working connection.** Testing a custom provider endpoint now builds its address the same way a real chat does, so a full or versioned URL that works in conversation no longer comes back as a failed test.
+
+- **Skales loads your installed skills only when they are needed.** If you had many skills installed, the full instructions for every one of them were packed into each message, which slowed responses and could make Skales talk about skills it was not actually using. It now keeps a short list of your skills and pulls a skill's full instructions the moment it is relevant or it decides to use one, so responses stay fast and accurate no matter how many skills you have.
+
+- **Long runs keep their thread instead of running out of room.** When a task takes many steps and the conversation grows large, Skales used to quietly drop the oldest turns and could lose track of what it had already done. It now compresses the older turns into a compact progress note and keeps working from it. On the models that support it the compression happens on the provider's side; everywhere else Skales does it itself, so a long task stays on course.
+
+- **Skales changes tack when it gets stuck on a goal.** While working a goal, if it catches itself repeating the same step or going several rounds without real progress, it now stops, rethinks, and tries a different approach instead of grinding through its step budget on something that is not working.
+
+- **Goal planning can run on a cheaper or local model.** The background steps that plan a goal, check its progress, and sum up where it is can now be pointed at a smaller or local model while your main model does the real work, so a long-running goal costs less to keep going. It uses your main model unless you choose another in the goal settings, so this stays your choice and works with any provider.
+
+- **Playground builds apps more reliably on a local model.** A smaller or self-hosted model now has a little more room on length and the number of AI calls so its apps make it through, and an app that calls a function it never wrote is caught and rebuilt instead of shipping broken. The prompt also hands the model a full page to fill in, so weaker models start from solid structure.
+
+### Fixed
+
+- **Group chats and Organization runs start again.** Kicking off a multi-model group chat or running an Organization could fail to begin; both now start and run the way you set them up.
+
+- **Discover works on a phone, and keeps your tag.** On a narrow screen the Spaces and details panels now open over the feed instead of sliding behind the sidebar, so everything is reachable. And if you already have a Discover tag, Skales keeps it instead of asking you to pick a new one after an update.
+
+- **Discover keeps what you share.** Shared skills, templates, and images used to scroll out of the feed and vanish for good once it filled up, which made Discover feel like a feed that resets. They now stay permanently; only everyday chatter ages out.
+
+- **The Brand Kit reaches Studio.** Turning on Brand Kit in an image or video generator now actually applies your brand: your palette in the prompt, plus your logo for Skales Visuals video. Before, the toggle recorded your choice but changed nothing.
+
+- **You can reset what Skales learned about you.** Settings, Memory, Adaptive personalization now has a Reset that erases your agent's character and everything Skales has picked up about how you work, in one click.
+
+- **AIPointer keeps the look you gave it.** AIPointer's own light or dark setting no longer follows the desktop theme; it stays the way you set it whatever theme Skales is on.
+
+- **Opening a finished chat from a notification lands on that chat.** When a reply finished while you were on another page, the notification and the sidebar dot used to drop you on the New Chat screen instead of the conversation that answered. Both now reopen the exact chat that finished.
+
+- **The New Chat screen lines up and opens its commands.** On the opening New Chat screen the "+" button and the send button now sit centered on the input row instead of dropping below it, and typing "/" or pressing the commands button opens the same command list the in-chat composer has.
+
+- **The screen-share picker sits where it should.** Choosing a window to share opened a panel pinned against the sidebar with empty space beside it. It now centers on the screen the way it was meant to.
+
+- **Clicking Chat lands on New Chat.** With a goal parked in your last session, clicking Chat used to reopen that session instead of the New Chat screen. It now opens New Chat unless a chat is actively replying, and a parked goal waits for you in your recent chats and on its card.
+
+- **A shared video plays as a video.** When Skales shared a YouTube link it could come through as a broken player. It now plays as a clean embedded video, while a richer page that happens to include a video keeps its full layout.
+
+- **The completion sound only plays when you are away.** A finished reply used to chime even while you sat on the chat waiting for it. The sound now plays only when Skales is in the background or you are on another page; the toast and the sidebar dot still appear either way.
+
+- **Links show a preview card.** A web address you or Skales drop into the chat now shows a small preview with the page title and image, for both sides of the conversation.
+
+- **A capped local model is told only the tools it kept.** When you limit how many tools a local model may use, Skales used to still describe whole groups of tools that did not fit the limit, so the model would reach for one it never received and report it could not help. The prompt now lists only the tools that made the cut, so the model works with what it actually has.
+
+- **Messages stay put when several arrive at the same time.** If two were saved in the same moment, a Friend Mode check-in landing while you replied on Telegram, or a Desktop Buddy reply arriving alongside one in the main window, one of them could quietly overwrite the other and vanish from your history. Each message is now saved in a way that cannot overwrite another, so they all stay where you left them no matter how they overlap.
+
+- **Deleting your message now clears its reply too.** Deleting one of your own messages used to leave the response it produced sitting right underneath it, even though the confirmation said the responses below would go too. Deleting your message now removes the whole exchange, the reply and any tool results that came with it, exactly as the prompt promises.
+
+- **Skales recognizes what it is set up to do.** With a provider configured for something like image generation or web search, Skales could still talk about that feature as if it were missing or not set up. It now reads what is available from the same place your provider keys live, so its sense of what it can do matches what you have configured.
+
+- **The Compact button shortens a long chat when you press it.** Compacting on demand reused the limits meant for the automatic version, so the button did nothing until a chat was already very long. Pressing it now shortens the conversation whenever you ask, and it stays disabled only while Skales is mid-reply.
+
+- **Large files and long results no longer get cut off and lost.** When Skales read a big file or ran a command with a lot of output, only the first few thousand characters reached it and the rest was dropped, so it could act on half a picture. It now reads large files in pages and, when a result is too big to show at once, saves the full text and keeps reading from where it left off. It also sizes how much it keeps to the room left in the conversation, so a single big result can no longer crowd out everything else.
+
+### Security
+
+- **Your saved provider API keys are now stored encrypted.** They used to sit in plain text in your settings file. Skales now keeps them scrambled on disk and unlocks them only when it needs to reach a provider. Keys you already saved are converted automatically the next time you open the app, with nothing to re-enter. Tokens for connected services like Telegram or Slack are not encrypted yet.
+
+- **Sign-in and link previews are hardened.** The sign-in window now treats whatever a provider sends back as text rather than markup and only accepts messages from Skales itself, closing a way a crafted error could slip content into the page. Link previews and the Studio read-from-web feature now refuse web addresses that point back at your own machine or your local network, except where a design served locally is the legitimate target.
+
+## v10.4.5
+
+Reliability fixes for the messaging channels, Friend Mode, and the chat view.
+
+### Fixed
+
+- **Skales's own check-ins stay out of your open chat.** When Skales reached out on its own, a Friend Mode note or a quiet identity check-in, the message could land in whatever chat you had open on the desktop and take it over. Those check-ins now keep to their own place, so the chat you are working in stays yours.
+
+- **WhatsApp conversations stay in their own chat.** Messages from WhatsApp used to drop into whichever chat happened to be open on the desktop. WhatsApp now keeps its own dedicated Skales chat, the same way Telegram does, so a conversation you start there stays in one place.
+
+- **Friend Mode keeps the thread when you switch screens.** When you moved from working on the desktop to a message from Skales on Telegram or WhatsApp, its note could arrive out of context, more like a generic notification than a friend picking up where you left off. Friend Mode now reads what you were just doing across all your channels, so its message stays on topic and in your voice, while still only ever writing to the channel it reached you on.
+
+- **Formatting comes through on Telegram.** Bold text, lists, and code blocks used to show up as raw symbols and stray asterisks in Telegram replies. They now render properly, and code stays in a clean block you can copy.
+
+- **Replies stop disappearing.** Some replies lived only on screen and vanished the moment you sent your next message or reloaded the chat. This included the playful easter-egg replies, the hello greeting, in-chat search results, the project commands, knowledge-base lookups, persona and model switches, and generated images and videos. All of these now stay in your chat history where you left them.
+
+- **Short messages get a proper bubble.** A very short message, yours or a short reply from Skales, drew a bubble too narrow to fit the copy and other action buttons. Short messages now keep a comfortable minimum width, so those buttons always fit.
+
+## v10.4.1
+
+Reliability and clarity fixes for Codework, local models, file access, and the chat view.
+
+### Fixed
+
+- **Codework tells you when a local model can't carry out a task.** With some local models, Codework could end a task as if it had succeeded while nothing was actually built or changed, or run on until it stopped on a confusing error. It now keeps the model pointed at doing the work for real, and when it still can't, it ends with a clear message and what to try next, instead of a quiet success that left nothing behind.
+
+- **File-access settings are clearer and fail early.** Folders you add under Custom are checked the moment you add them, so a missing, read-only, or otherwise invalid path is flagged with a warning instead of breaking mid-task. When file access is set to Workspace Only and something tries to use a path outside the workspace, Skales now stops with a clear message about how to allow it, instead of quietly saving the file somewhere you did not expect. The panel also notes that these settings cover file access only, which is separate from Computer Use control of your screen, mouse, and keyboard.
+
+- **Local models get the time they need to respond.** The previous limit could cut a local model off while it was still loading into memory or working through a longer step, which surfaced as a confusing timeout. Timeouts now start higher for local and self-hosted models, and the per-provider timeout you set in Settings is honored everywhere Codework runs, not only in chat.
+
+- **Multi-step tool runs read as one block.** When Codework takes several tool steps before answering, for example reading a file, listing a folder, then replying, the steps now collapse into a single section with one tool-results view instead of stacking as separate windows.
+
+- **Copy your own messages.** The copy button now appears on your messages too, matching the one already on Skales replies.
+
 ## v10.4.0
 
 AIPointer ⦿ is now a built-in part of Skales.
