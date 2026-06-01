@@ -1,10 +1,17 @@
 <div align="center">
     <h1>Skales 🦎</h1>
-  <a href="https://github.com/skalesapp">
-    <img src="https://github.com/skalesapp.png" alt="Skales App" width="110" />
-  </a>
- 
-  <br>
+    > Local-first AI desktop agent. Set it a goal, it works on its own.
+
+<p align="center">
+  <img src="https://skales.app/light.png" width="49%" alt="Skales v11 light mode" />
+  <img src="https://skales.app/dark.png" width="49%" alt="Skales v11 dark mode" />
+</p>
+ <p>
+    <a href="https://github.com/skalesapp/skales/releases/tag/v11.0.0"><img src="https://img.shields.io/badge/version-11.0.0-10b981?style=flat-square" alt="Version 11.0.0" /></a>
+    <a href="https://skales.app"><img src="https://img.shields.io/badge/license-BSL_1.1-10b981?style=flat-square" alt="License" /></a>
+    <a href="https://skales.app"><img src="https://img.shields.io/badge/Windows_+_macOS_+_Linux_+_Android-10b981?style=flat-square&logo=windows&logoColor=white" alt="Platform" /></a>
+    <a href="https://github.com/skalesapp/skales/stargazers"><img src="https://img.shields.io/github/stars/skalesapp/skales?style=flat-square&color=10b981" alt="Stars" /></a>
+  </p>
   <p>Skales Desktop:
     <a href="https://skales.app/download/latest-windows"><b>Windows</b></a> · 
     <a href="https://skales.app/download/latest-mac-arm64"><b>macOS (Apple Silicon)</b></a> · 
@@ -12,23 +19,9 @@
     <a href="https://skales.app/download/latest-linux"><b>Linux</b></a>
   </p>
   <p>Skales Mobile: 📱<a href="https://play.google.com/store/apps/details?id=app.skales.mobile"><b>Android</b></a></p>
-<p align="center">
-    <img src="https://skales.app/readme.gif" alt="Skales AI Desktop Agent Interface" width="100%" />
 
-</p>
-</b></p>
-  <p>
-    <strong>Local AI Desktop Agent for Windows, macOS & Linux</strong>
-  </p>
-  <p>
-  <sub>Android live on Google Play. iOS in App Store review.</sub>
-    </p>
-<p>
-    <a href="https://github.com/skalesapp/skales/releases/tag/v11.0.0"><img src="https://img.shields.io/badge/version-11.0.0-10b981?style=flat-square" alt="Version 11.0.0" /></a>
-    <a href="https://skales.app"><img src="https://img.shields.io/badge/license-BSL_1.1-10b981?style=flat-square" alt="License" /></a>
-    <a href="https://skales.app"><img src="https://img.shields.io/badge/Windows_+_macOS_+_Linux_+_Android-10b981?style=flat-square&logo=windows&logoColor=white" alt="Platform" /></a>
-    <a href="https://github.com/skalesapp/skales/stargazers"><img src="https://img.shields.io/github/stars/skalesapp/skales?style=flat-square&color=10b981" alt="Stars" /></a>
-  </p>
+
+
   <p>
     One-click install. No Docker. No terminal. 15+ AI providers. Runs locally with Ollama.<br/>
     Chat, code autonomously, create images & videos, control your desktop, browse the web, organize multi-agent teams, manage calendars, send emails, and automate your day.
