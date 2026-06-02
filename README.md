@@ -124,10 +124,6 @@ Skales is an AI agent that lives on your desktop. Not in a browser tab, not behi
 
 ## 🚀 What Skales Can Do
 
-<p align="center">
-<img width="1792" height="1082" alt="Bildschirmfoto 2026-06-02 um 20 20 03" src="https://github.com/user-attachments/assets/50fd1865-fe71-40ef-8573-0e1598867cf1" />
-</p>
-
 ### 🎯 Background Goals
 Type `/goal` and what you want, like `/goal build me a trading bot`, and Skales takes it on as ongoing work instead of a single reply. It plans the steps, keeps going on its own in the background with the chat closed, and picks back up where it left off after you reopen the app. Run more than one at a time, set one on a repeating schedule, or let Skales recognize a goal from how you ask. When it needs a decision it parks and shows a card to continue or stop; otherwise it keeps making progress. Every finished goal folds what it learned back into Memory, so the next one starts ahead.
 
@@ -203,12 +199,6 @@ A cursor-anchored quick-ask AI overlay, built in. Hold the right Cmd key (right 
   <img src="https://skales.app/magic.gif" alt="Desktop Buddy" width="100%" />
 </p>
 A floating animated mascot on your screen. Three skins: Skales the gecko, Bubbles the Bubble, Capy the Capybara. Click to chat, approve tool executions from the speech bubble, or minimize to tray.
-
-<p align="left">
-  <a href="https://skales.app">
-    <img src="https://skales.app/rm_logo.png" alt="Skales Logo" width="250" />
-  </a>
-</p>
 
 ### 📅 Planner, Calendar and AI Tasks
 Daily and weekly planning with a visual calendar. Connect Google Calendar, Apple Calendar, Outlook, or any CalDAV server. Your AI sees your events and schedules around them. Automated tasks on a Kanban board run in the background. Schedule recurring AI tasks with cron precision.
