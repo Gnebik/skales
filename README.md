@@ -1,9 +1,8 @@
 <div align="center">
-    <h1>Skales<br><br>
-<p align="center"><img width="200" height="200" alt="image" src="https://github.com/user-attachments/assets/c3e88872-6fb4-449d-84a8-4789acf3ef02" />
-</p></h1>
+    <h1><img width="45" height="45" alt="image" src="https://github.com/user-attachments/assets/c3e88872-6fb4-449d-84a8-4789acf3ef02"/><br>S K A L E S
+</h1>
     
-Local-first AI desktop agent. Set it a goal, it works on its own.
+AI desktop agent. Set it a goal, it works on its own.
 
 <p align="center">
   <img width="960" height="580" alt="Dashboard" src="https://github.com/user-attachments/assets/bba3411e-85eb-44e8-ab58-be2a5a88a650" />
