@@ -1,10 +1,12 @@
 <div align="center">
-    <h1>Skales 🦎</h1>
-    > Local-first AI desktop agent. Set it a goal, it works on its own.
+    <h1>Skales<br><br>
+<p align="center"><img width="200" height="200" alt="image" src="https://github.com/user-attachments/assets/c3e88872-6fb4-449d-84a8-4789acf3ef02" />
+</p></h1>
+    
+Local-first AI desktop agent. Set it a goal, it works on its own.
 
 <p align="center">
-  <img src="https://skales.app/light.png" width="49%" alt="Skales v11 light mode" />
-  <img src="https://skales.app/dark.png" width="49%" alt="Skales v11 dark mode" />
+  <img width="960" height="580" alt="Dashboard" src="https://github.com/user-attachments/assets/bba3411e-85eb-44e8-ab58-be2a5a88a650" />
 </p>
  <p>
     <a href="https://github.com/skalesapp/skales/releases/tag/v11.0.0"><img src="https://img.shields.io/badge/version-11.0.0-10b981?style=flat-square" alt="Version 11.0.0" /></a>
@@ -97,7 +99,8 @@
 </p>
 
 <p align="center">
-  <img src="https://skales.app/rm_1.png" alt="Skales AI Desktop Agent Interface" width="100%" />
+  <img src="https://skales.app/light.png" width="49%" alt="Skales v11 light mode" />
+  <img src="https://skales.app/dark.png" width="49%" alt="Skales v11 dark mode" />
 </p>
 
 ## ⚡ Why Skales?
@@ -123,7 +126,7 @@ Skales is an AI agent that lives on your desktop. Not in a browser tab, not behi
 ## 🚀 What Skales Can Do
 
 <p align="center">
-  <img src="https://skales.app/rm_0.png" alt="Skales Features Overview" width="100%" />
+<img width="1792" height="1082" alt="Bildschirmfoto 2026-06-02 um 20 20 03" src="https://github.com/user-attachments/assets/50fd1865-fe71-40ef-8573-0e1598867cf1" />
 </p>
 
 ### 🎯 Background Goals
