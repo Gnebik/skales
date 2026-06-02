@@ -76,10 +76,9 @@
 ## Demo
 
   <p align="center">
-  <a href="https://www.youtube.com/watch?v=k83NlptVmfc">
-    <img src="https://img.youtube.com/vi/k83NlptVmfc/maxresdefault.jpg" 
-         alt="Skales Demo Video" width="100%" />
-  </a>
+        <a href="[https://skales.app](https://www.youtube.com/watch?v=k83NlptVmfc)">
+    <img src="https://skales.app/readme.gif" alt="Skales — Local AI Desktop Agent" width="100%" />
+        </a>
 </p>
 
 
