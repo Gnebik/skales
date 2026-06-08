@@ -6,6 +6,84 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## v11.2.0
+
+### Added
+
+- **Teach Skales a desktop task by recording it.** On the Workflow page, hit Teach by recording, do the task once on your screen, then press F10 to stop (F9 pauses, so you can skip typing a password). Before it saves you see every captured step, including the text you typed, so you can check nothing sensitive slipped in, then save it as a /goal command. Type that /goal in chat, or press Run, and Skales replays your exact clicks, typing and scrolling after a short countdown that lets you switch to the right window. Replay is built in, with no setup. Honest about limits: it works on macOS, Windows and Linux X11 (not Wayland), and it records and assists rather than blind-driving arbitrary native apps.
+
+- **A real document you and Skales share.** Open the Document panel from the chat header or with /doc. Ask Skales to write or change a document ("write me a doc about X") and it appears in the panel; edit it yourself with the formatting toolbar (bold, italic, underline, heading, list, quote, code) and Skales sees your changes on the next message. A chat can hold several documents, picked from the dropdown, and they are saved with the chat. Documents live with the chat, not as files on your disk; click Download to save the open one as a .md file, or ask Skales to save it as a file when you want one on your computer.
+
+- **Group Chat is a live conversation now.** Pick your participants, and after the opening round you stay in the chat: write to the group, the agents read your messages and answer each other turn by turn, one acts as the advisor, and you end it with a button instead of it running on. Typing /groupchat in a chat with no topic hands the current conversation over to the group as the topic.
+
+- **Your Briefing arrives as cards.** Fresh Briefing links now show as compact cards (image, title, summary, source) instead of long raw links, ad and tracker redirects are filtered out, and /briefing pulls up your unread items on demand.
+
+- **Coloured tray status and a Chat submenu.** The tray status shows a colour dot for its state, and hovering Chat gives you New Chat and History without leaving the tray.
+
+- **Your Briefing comes to you.** Fresh links found for your Briefing now arrive in a dedicated Briefing chat (with the waiting dot) and the notification names the top item, instead of only telling you a count.
+
+- **Waiting-message markers.** When Skales reaches out on its own (Friend Mode check-ins, finished scheduled tasks) the conversation shows a dot in the chat list and History so you can see a reply is waiting, and it clears the moment you open it. A count on the chat history button shows how many chats are waiting, so a pile of them is visible at a glance.
+
+- **Agents that learn from their work (opt-in).** Turn on Agent Memory in Settings and each Custom Agent keeps its own memory, distilling a short lesson from every task it finishes and reading it back on the next run, so it gets better at your work over time instead of starting fresh each time.
+
+- **LLM Profiles for reliable tool use across models (opt-in).** Turn on LLM Profiles in Settings and Skales tunes itself per model: it caps the tool set, compacts the prompt, sets sampling, and adds short per-model hints, so weaker or local models stop fumbling tool calls. A profile binds automatically to whatever model its pattern matches, with no default to set, and the LLM Profiles page shows you which profile your current model is using. Profiles can also teach a model your tool names directly, so a model that reaches for create_file learns the real tool is write_file. Built-in profiles ship for DeepSeek, Qwen, Llama, Gemma, Mistral, GLM, Kimi and small local models; import your own from a file, pasted JSON or a URL, with the full tool-name list right there so you never have to know them by heart. Frontier models are left untouched.
+
+### Changed
+
+- **Local models stay warm between turns.** Skales now keeps your local Ollama model resident for 30 minutes after a turn instead of letting it unload on Ollama's 5-minute default, so back-to-back turns and background goals no longer pay for a cold model reload. Power users can change the window (including keeping it always resident) with the SKALES_OLLAMA_KEEP_ALIVE setting.
+
+- **Smaller and local models have far more room to work.** Skales now sends a lean system prompt by default and looks up capability and feature detail on demand, and it automatically gives constrained models (local models, and smaller cloud models such as DeepSeek) a compact prompt and a focused set of tools. Weaker models complete tasks and call tools noticeably more reliably as a result.
+
+- **Chat no longer gets stuck repeating a tool call.** If a model calls the exact same tool over and over in normal chat, Skales nudges it to change course and stops cleanly instead of looping until the step limit.
+
+- **Clearer command approval.** When Skales asks before running a shell command, it now also explains that you can let it run commands without being asked each time by switching Safety Mode in Settings.
+
+### Fixed
+
+- **Email and calendar tools work on local models again.** On small local models with several integrations connected, Skales caps the offered tool set so the model is not overwhelmed, and your connected email and calendar tools could be dropped from that set while the model still tried to call them, so nothing happened. Connected email and calendar now always survive the cap, so those calls actually run.
+
+- **Record a browser flow straight into a Playbook.** On the Playbooks page, Record opens the browser in record mode and captures what you do as a playbook, while + builds one by hand step by step. The browser now opens to DuckDuckGo (a local-first tool has no reason to push Google), and Skales never records its own window as a step, so a recording starts from a real site. Promote any playbook to a /goal command from its menu.
+
+- **WhatsApp keeps your data to you, and you stay in control.** Only the number you mark as the owner (Settings, WhatsApp contacts, "Set as you") gets your assistant with your memory and tools. Skales never auto-replies to anyone else: when a whitelisted contact writes, their message is recorded, their chat is flagged waiting, and you are pinged, then you decide, tell Skales "answer Marina that ..." and it sends (after you confirm), or turn it into a reminder. Unknown numbers are ignored entirely. With no owner set, nobody gets your assistant.
+
+- **The chat no longer flickers while you type.** The HTML preview used to reload and flash white on every keystroke (in the composer or the Document panel); it now stays put.
+
+- **Clearing a chat sticks now.** /clear used to wipe only the view, so the messages came back on reload. It now clears the stored conversation too. The Briefing inbox also keeps only its recent entries instead of growing forever.
+
+- **WhatsApp inbound is gated and safer.** Only contacts on your whitelist can reach Skales over WhatsApp, and a contact's WhatsApp Status is never treated as a message, so a Status can never be acted on as an instruction. Images sent on WhatsApp are read with your configured Vision provider.
+
+- **The Vision provider you configure is actually used.** With a Vision provider set up under Settings, Skales now reads images with it in chat and on Telegram instead of quietly sending them to your active chat provider.
+
+- **Scheduled tasks and Friend Mode check-ins keep firing.** A background task that hung could quietly stall the whole scheduler, so cron jobs and proactive check-ins stopped running until the app was restarted. Proactive check-ins now run on every heartbeat regardless, a stuck task is released automatically, and the background runner restarts itself if it ever stops. Turning on the Always-On Agent now runs your scheduled tasks on its own, even when Autonomous Mode is off.
+
+- **Large file attachments are no longer cut short.** Attaching a big text or code file now sends as much of it as the model's context window allows, honoring your Override Model Limits, instead of a fixed cap that dropped most of a large file.
+
+### Removed
+
+- **Claude and Gemini subscription sign-in.** Anthropic and Google do not allow paid-subscription sign-in from outside their own apps, so these two options could never connect. Signing in with a ChatGPT (Codex) subscription still works, and Claude or Gemini stay available through an API key under AI Providers.
+
+## v11.1.6
+
+A focused fix release on v11.1.5.
+
+### Fixed
+
+- **WhatsApp connects on Windows again.** Setting up WhatsApp on Windows failed with a missing-component error and never showed the QR code. Skales now ships everything the WhatsApp link needs, shows the QR, and pairs. Reconnecting also works reliably if the link ever gets stuck, instead of silently doing nothing.
+
+- **Setup no longer loops back to the start.** After the welcome summary you could be sent back to the first step over and over. Setup now finishes and opens the chat.
+
+- **Friend Mode email check-ins arrive.** Proactive messages set to the email channel were not being delivered. They now send from your connected email account, the same one the chat uses.
+
+- **Run a scheduled task by hand and actually see it.** Pressing Run now updated the last-run time but left the execution log empty, so it looked like nothing happened. Manual runs are now recorded in the log like scheduled ones.
+
+- **Chat hover hints stay visible.** Tooltips near the message box could be drawn behind it. They now appear on top.
+
+### Changed
+
+- **Voice runs through your Skales voice setup.** The separate on-device voice engine has been removed. The AIPointer overlay's read-aloud and voice input now use your normal Skales voice configuration. The download is smaller and a Windows setup error is gone.
+
+- **A nicer default email signature.** New email accounts start with a short "Cheers" signature instead of a sample placeholder.
+
 ## v11.1.5
 
 A small follow-up on v11.1.0.

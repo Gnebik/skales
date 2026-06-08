@@ -2,13 +2,13 @@
     <h1><img width="45" height="45" alt="image" src="https://github.com/user-attachments/assets/c3e88872-6fb4-449d-84a8-4789acf3ef02"/><br>S K A L E S
 </h1>
     
-AI desktop agent. Set it a goal, it works on its own.
+The private AI that lives on your computer and does real work, not just chat.
 
 <p align="center">
   <img width="960" height="580" alt="Dashboard" src="https://github.com/user-attachments/assets/bba3411e-85eb-44e8-ab58-be2a5a88a650" />
 </p>
  <p>
-    <a href="https://github.com/skalesapp/skales/releases/tag/v11.1.0"><img src="https://img.shields.io/badge/version-11.1.0-10b981?style=flat-square" alt="Version 11.1.0" /></a>
+    <a href="https://github.com/skalesapp/skales/releases/tag/v11.2.0"><img src="https://img.shields.io/badge/version-11.2.0-10b981?style=flat-square" alt="Version 11.2.0" /></a>
     <a href="https://skales.app"><img src="https://img.shields.io/badge/license-BSL_1.1-10b981?style=flat-square" alt="License" /></a>
     <a href="https://skales.app"><img src="https://img.shields.io/badge/Windows_+_macOS_+_Linux_+_Android-10b981?style=flat-square&logo=windows&logoColor=white" alt="Platform" /></a>
     <a href="https://github.com/skalesapp/skales/stargazers"><img src="https://img.shields.io/github/stars/skalesapp/skales?style=flat-square&color=10b981" alt="Stars" /></a>
@@ -24,8 +24,8 @@ AI desktop agent. Set it a goal, it works on its own.
 
 
   <p>
-    One-click install. No Docker. No terminal. 15+ AI providers. Runs locally with Ollama.<br/>
-    Chat, code autonomously, create images & videos, control your desktop, browse the web, organize multi-agent teams, manage calendars, send emails, and automate your day.
+    One-click install. No Docker, no terminal. 15+ AI providers, or fully offline with Ollama. Your files never leave your machine.<br/>
+    Ask it something, hand it a goal and close the lid, or let it reach you on WhatsApp and Telegram. One place for everything, made for everyone from 6 to 60+.
   </p>
    <p>
     <sub>Switching from <b>OpenClaw</b>, <b>Hermes Agent</b>, or <b>ChatGPT</b>? Skales has a built-in migration importer. Settings > Import from Another Tool.</sub>
@@ -129,7 +129,7 @@ Skales is an AI agent that lives on your desktop. Not in a browser tab, not behi
 Type `/goal` and what you want, like `/goal build me a trading bot`, and Skales takes it on as ongoing work instead of a single reply. It plans the steps, keeps going on its own in the background with the chat closed, and picks back up where it left off after you reopen the app. Run more than one at a time, set one on a repeating schedule, or let Skales recognize a goal from how you ask. When it needs a decision it parks and shows a card to continue or stop; otherwise it keeps making progress. Every finished goal folds what it learned back into Memory, so the next one starts ahead.
 
 ### 📐 Workflows
-Workflows are the hand-drawn half of the goal system. A typed `/goal` lets Skales plan the steps for you; a Workflow lets you draw the steps yourself once, give them a trigger word like `/goal-ship`, and run that plan again whenever you need it. Think of it as a visual compiler onto the same plan format a typed `/goal` produces: you lay out steps, success criteria, and named inputs on a canvas, and Skales compiles them into the brief the planner already runs. One playbook store, three producers: the agent crystallizes finished goals into reusable plans, you draw the rest on a canvas, or you **teach a workflow by showing it once**, walk Skales through a task in a normal chat, then turn that chat into a workflow and Skales distills the repeatable steps, trigger and success criteria for you. A learned workflow runs cold from then on through the normal goal path, falling back to vision when a button has moved. Workflows are opt-in, so you turn them on under Add-Ons, and a hint in Settings > Goal points you there. Running a saved workflow opens a fresh chat with its trigger prefilled and editable, so you can adjust the request before it starts.
+Workflows are the hand-drawn half of the goal system. A typed `/goal` lets Skales plan the steps for you; a Workflow lets you draw the steps yourself once, give them a trigger word like `/goal-ship`, and run that plan again whenever you need it. Think of it as a visual compiler onto the same plan format a typed `/goal` produces: you lay out steps, success criteria, and named inputs on a canvas, and Skales compiles them into the brief the planner already runs. One playbook store, four producers: the agent crystallizes finished goals into reusable plans, you draw the rest on a canvas, you **teach a workflow by showing it once**, walk Skales through a task in a normal chat, then turn that chat into a workflow and Skales distills the repeatable steps, trigger and success criteria for you, or you **record a real desktop task**: on the Workflow page hit Teach by recording, do it once on your screen (F10 stops, F9 pauses so you can skip a password), and Skales replays your exact clicks and typing when you run its `/goal`, with browser flows recorded in Playbooks instead. A learned workflow runs cold from then on through the normal goal path, falling back to vision when a button has moved. Workflows are opt-in, so you turn them on under Add-Ons, and a hint in Settings > Goal points you there. Running a saved workflow opens a fresh chat with its trigger prefilled and editable, so you can adjust the request before it starts.
 
 ### 🧩 Agent Skills (Open Standard)
 Import skills from the Agent Skills format used by Claude Code, Codex, GitHub Copilot, and Cursor. Paste a GitHub URL, select a local folder, or paste SKILL.md content. Imported skills work across Chat, Codework, Browser, and Lio AI. Browse [1000+ community skills](https://github.com/VoltAgent/awesome-agent-skills).
@@ -210,7 +210,7 @@ A floating animated mascot on your screen. Three skins: Skales the gecko, Bubble
 Daily and weekly planning with a visual calendar. Connect Google Calendar, Apple Calendar, Outlook, or any CalDAV server. Your AI sees your events and schedules around them. Automated tasks on a Kanban board run in the background. Schedule recurring AI tasks with cron precision.
 
 ### 🧠 Memory and Dreaming
-Skales remembers you. Short-term and long-term memory, identity maintenance, and a 3-phase overnight memory consolidation engine (Dreaming) that promotes important facts and discards noise. Dream Diary included (beta). Import an **Obsidian vault** on the Memory page to browse your notes as a backlink graph and let Skales read from them. History search can also find a past chat by meaning, not just exact words, ranked with how recent it is and running on a local embedding model by default.
+Skales remembers you. Short-term and long-term memory, identity maintenance, and a 3-phase overnight memory consolidation engine (Dreaming) that promotes important facts and discards noise. Dream Diary included (beta). Import an **Obsidian vault** on the Memory page to browse your notes as a backlink graph and let Skales read from them. History search can also find a past chat by meaning, not just exact words, ranked with how recent it is and running on a local embedding model by default. **Custom Agents can keep their own memory too** (opt-in): each agent distils a lesson from every task it finishes and reads it back next time, so it gets better at your work over time instead of starting fresh each run.
 
 ---
 
@@ -244,6 +244,8 @@ No vendor lock-in. Bring Your Own Key or run locally for free.
 | Any OpenAI-compatible endpoint | DeepSeek, Mistral, xAI, Cerebras |
 
 **No API key needed:** sign in with your **ChatGPT subscription** (Plus, Pro, Business, Enterprise) under Settings → AI Providers → Subscriptions. Web search is no longer Tavily-only either: choose **DuckDuckGo** (no key, the new default), **Brave**, a self-hosted **SearXNG**, or a connected MCP server under Settings → Integrations → Web Search.
+
+**LLM Profiles (opt-in):** different models call tools very differently, so Skales can match a per-model profile that tunes the tool budget, prompt size, and a short per-model hint, so weaker or local models stop fumbling tool calls. Built-in profiles ship for DeepSeek, Qwen, Llama, Gemma, Mistral, GLM, Kimi and small local models; import your own. Frontier models run unchanged. Settings → AI Providers.
 
 ---
 

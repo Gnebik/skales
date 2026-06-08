@@ -947,6 +947,20 @@
       <div class="warn"><strong>⚠️ Safety Mode</strong> — In Safe Mode, every Computer Use action requires your approval before execution.</div>
     </section>
 
+    <!-- v11.2.0 highlights -->
+    <section id="v11-2-highlights">
+      <h2><span class="icon">🎉</span> What&rsquo;s New in v11.2.0 <span class="badge badge-new">v11.2.0</span></h2>
+      <p>v11.2.0 makes Skales reliable across very different models with opt-in LLM Profiles, gives Custom Agents a memory that improves with use, adds co-edited documents in chat, turns Group Chat into a live conversation, and keeps local models warm between turns.</p>
+      <div class="card-grid">
+        <div class="card"><div class="card-title">🎛️ LLM Profiles</div><div class="card-desc">Per-model tuning so tool-calling stays reliable across very different models. A profile matches your active model by id and caps the tool set, compacts the prompt, sets sampling, and adds short per-model and per-tool hints, so a model that reaches for <code>create_file</code> learns the real tool is <code>write_file</code>. Built-ins ship for DeepSeek, Qwen, GLM, Kimi, Mistral, Gemma, Llama and small local models; import your own by file, JSON or URL, and browse the community library at <a href="https://github.com/gonemedia/llm-profiles" style="color:var(--accent)">gonemedia/llm-profiles</a>. Opt-in under Settings, or the <strong>/profiles</strong> page. Frontier models run unchanged.</div></div>
+        <div class="card"><div class="card-title">🧠 Self-improving agents</div><div class="card-desc">Turn on Agent Memory and each Custom Agent keeps its own memory, distilling a short lesson from every task it finishes and reading it back on the next run, so it gets better at your recurring work over time instead of starting fresh.</div></div>
+        <div class="card"><div class="card-title">📝 Documents in chat</div><div class="card-desc">Open the Document panel from the chat header or with <code>/doc</code>. Ask Skales to write or change a document and edit it yourself with the toolbar; a chat can hold several, saved with the chat.</div></div>
+        <div class="card"><div class="card-title">💬 Live Group Chat</div><div class="card-desc">Group Chat is a real back-and-forth now: after the opening round you stay in the conversation, the agents read your messages and answer each other turn by turn, and you end it with a button.</div></div>
+        <div class="card"><div class="card-title">🎬 Teach a desktop task</div><div class="card-desc">Record a task once on the Workflow page (F10 to stop, F9 to pause), review every captured step, then save it as a <code>/goal</code> command that replays your exact clicks and typing.</div></div>
+        <div class="card"><div class="card-title">⚡ Local models stay warm</div><div class="card-desc">Skales now keeps your local Ollama model resident between turns instead of letting it unload on Ollama&rsquo;s short default, so back-to-back turns and background goals do not pay for a cold reload. Adjustable with the <code>SKALES_OLLAMA_KEEP_ALIVE</code> setting.</div></div>
+      </div>
+    </section>
+
     <!-- v11.1.5 highlights -->
     <section id="v11-1-5-highlights">
       <h2><span class="icon">🎉</span> What&rsquo;s New in v11.1.5 <span class="badge badge-new">v11.1.5</span></h2>
