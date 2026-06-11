@@ -8,7 +8,7 @@ The private AI that lives on your computer and does real work, not just chat.
   <img width="960" height="580" alt="Dashboard" src="https://github.com/user-attachments/assets/bba3411e-85eb-44e8-ab58-be2a5a88a650" />
 </p>
  <p>
-    <a href="https://github.com/skalesapp/skales/releases/tag/v11.2.7"><img src="https://img.shields.io/badge/version-11.2.7-10b981?style=flat-square" alt="Version 11.2.7" /></a>
+    <a href="https://github.com/skalesapp/skales/releases/tag/v11.3.0"><img src="https://img.shields.io/badge/version-11.3.0-10b981?style=flat-square" alt="Version 11.3.0" /></a>
     <a href="https://skales.app"><img src="https://img.shields.io/badge/license-BSL_1.1-10b981?style=flat-square" alt="License" /></a>
     <a href="https://skales.app"><img src="https://img.shields.io/badge/Windows_+_macOS_+_Linux_+_Android-10b981?style=flat-square&logo=windows&logoColor=white" alt="Platform" /></a>
     <a href="https://github.com/skalesapp/skales/stargazers"><img src="https://img.shields.io/github/stars/skalesapp/skales?style=flat-square&color=10b981" alt="Stars" /></a>
@@ -144,7 +144,10 @@ Select any project folder. Describe the task. Pick your model. Watch the agent r
 Build an AI company. Create departments, assign specialized agents, set team leaders, and delegate complex tasks. The CEO agent auto-routes work to the right team. Export and import Company Packs to share your org setup. Advisor Strategy: use a powerful model for planning and a fast model for execution.
 
 ### 👥 Teams
-Pair a second Skales desktop and work together, you and your agents. You confirm each new computer by name, then both of you, and both agents, share a conversation, end-to-end encrypted. A You / Agent switch lets your agent reply on your behalf; cross-computer messages never run anything on the other machine. Off until you turn it on, and the mobile pairing you already use is unchanged.
+Pair a second Skales desktop and work together, you and your agents. You confirm each new computer by name, then both of you, and both agents, share a conversation, end-to-end encrypted. A You / Agent switch lets your agent reply on your behalf - and since v11.3.0 it replies with this machine's full tool set, so "ask my agent to actually do it" works; cross-computer messages still never run anything on the other machine. Off until you turn it on, and the mobile pairing you already use is unchanged.
+
+### 🐝 Agent Swarm (`/swarm`)
+Every paired computer becomes a workhorse. `/swarm <task>` sends a job to the best free Skales device on your network, `/swarm @name <task>` targets a specific one, and an optional mode prefix sets how it runs there: `code:` (coding agent), `plan:` (read-only plan), `auto:` (fully autonomous). Devices pair via mDNS or manually by IP (Tailscale peers survive restarts), the receiver must opt in and share a secret, and the result comes back into the chat you sent from - plus Notifications and a shared task history on the Swarm page.
 
 **Other agents can call Skales (A2A).** Skales speaks the Agent2Agent standard, so another agent, or another Skales, can discover this instance and delegate a task to it. Off by default, and you stay in control of what an outside caller can do.
 

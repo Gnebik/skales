@@ -6,6 +6,76 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## v11.3.0
+
+### Fixed
+
+- **Attaching several files no longer dumps the second one into your message.** With two or more files attached, only the first showed as a clean chip - the full content of every further file rendered as raw text inside your chat bubble. All attached files now show as compact chips, your typed question below them, and a file whose content contains code fences cannot break the display either.
+
+- **Drop a zip into the chat.** Archives (zip, tar, gz, 7z, rar up to 25 MB) attached to a message are saved into the Workspace and attached as a reference chip - ask Skales to extract them or read specific files from them and it will, using its shell and file tools within your permitted folders. Previously archives were rejected with a "cannot be read" error.
+
+- **Schedules that worked before v11.2.7 fire again.** The schedule executor and the schedule queue disagreed about who may run: the queue accepted Autonomous Mode OR the Always-On Agent, the executor only Always-On. On a machine running with Autonomous Mode alone, every user schedule stayed silently skipped - shown as Active, execution log empty, nothing fired (an old hidden scheduler had masked this before v11.2.7 by running schedules on its own). Both now apply the same rule: either toggle runs your schedules. Two more honesty fixes ship with it: a schedule paused after repeated failures now actually shows as paused with a log entry saying why (it used to keep displaying Active while being skipped forever - one toggle re-arms it), and stale failure counters from the era when schedules could not really execute are cleared once, so no schedule stays blocked for failures that never happened. The Schedule page warns clearly when active schedules exist but nothing authorizes them to run.
+
+- **Thinking traces from Kimi-style models stop bleeding into the answer.** Some serving setups start the model directly inside its reasoning and only ever emit the CLOSING think tag. The whole thought process then rendered as answer text with a stray </think> in the middle. An unopened closing tag now ends a reasoning block: the thoughts land in the collapsed reasoning trace, the answer stays clean, and any further stray tags are removed.
+
+- **The update restart is silent now.** Clicking "Restart Now" tears down the internal server and the messaging bots before the installer runs - and for a split second the still-open window showed that dying state as an error flash. The windows now hide first, then the teardown runs; the app simply closes and comes back updated.
+
+- **Release notes on the Update page too.** The same scrollable What's New block as in Settings now sits on the page where downloading and restarting actually happen, so you can read what you are about to install.
+
+- **What's New lives inside the app.** Settings -> Advanced -> Updates now shows the release notes in a scrollable block, newest release first, the full history one click away. The notes are fetched live from skales.app, so even an older installation reads about the latest version; offline the bundled copy steps in, and a freshly updated build that is ahead of the website automatically shows its own newer notes.
+
+- **Team and Swarm pages introduce themselves.** The first visit shows a short, dismissable explainer of what the page does and how to get started: what to enable on the second device for Swarm, and how pairing, the You/Agent switch and the dual-approved shared plan work for Teams. One "Got it" and it never comes back.
+
+- **Skales knows its own interface now.** Asking "where do I set the voice provider" or "where are the AI models" used to get a confident but wrong answer (it would invent a "Voice" tab or send you to Chat for providers). There is now a factual map of every Settings tab, page and theme that Skales consults before telling you where to click - so the directions are right whatever model is running. A build check keeps the map in lockstep with the real UI, so it can't quietly drift out of date.
+
+- **Teams gets a shared plan - two humans, two agents, one checklist.** Open a plan in any team chat: both of you add items and assign each one to a machine (or hit "I'll take everything" to hand the whole list to one device). Nothing runs until BOTH of you approve - and any edit to the list, including a takeover, voids both approvals so nobody can swap tasks after sign-off. Once armed, each computer's agent works through exactly its own items with its own tools and keys, ticks them off with the result attached, and posts each outcome into the team thread. Agents see the conversation only from plan creation onward, a teammate's words are never instructions, and a received plan can never execute anything by itself.
+
+- **Swarm grows up to a real beta.** Manually added devices (Tailscale, fixed IPs) no longer fall to offline after 60 seconds and now survive a restart - a health loop keeps every peer's status fresh, and manual peers can be removed again. The Swarm page's delegate form uses the same queued path as /swarm in chat, so long tasks no longer die on a synchronous timeout; one shared history shows chat AND page delegations with live status that updates when the peer reports back. A /swarm typed in a chat gets its result back IN that chat, and delegated tasks on the working device carry a 🐝 badge with the sender's name. The full command: `/swarm <task>` picks the best free device, `/swarm @name <task>` targets one, and an optional mode prefix sets how it runs there - `/swarm @name code: <task>` (coding agent), `plan:` (read-only plan), `auto:` (fully autonomous). A missing swarm secret is flagged on the page instead of failing silently at send time.
+
+- **Discover suggestions actually arrive.** The "Your AI wants to share" cards were generated for months but could silently jam: a queue full of stale suggestions blocked every new one forever. Stale cards now clear themselves, and finishing real work (a goal, an autonomous task) nudges a fresh suggestion right away instead of waiting for the next four-hour window. You approve or skip - nothing posts on its own.
+
+- **Wrapped lands in the feed as a picture.** Your weekly Wrapped used to be auto-posted as plain text. Now the Monday suggestion card routes through the Wrapped page, captures the real card and posts it as an image - identical pixels on every screen, no review wait. The Post button on the Wrapped page does the same, and the post carries your week's stats. Server-side, the no-review lane for Wrapped images is now hard-gated (owned entry, weekly rate, content check) so it cannot be abused as a backdoor for arbitrary images.
+
+- **Share any gallery image to Discover.** Sharing used to be possible only in the moment of generation; the gallery now has a share button on every image, using the same compress-and-review pipeline.
+
+- **Friend Mode is back - and cannot silently die again.** A check-in that never reached you (channel briefly down, bot mid-restart) was recorded as if it had been delivered; three of those and Friend Mode went permanently quiet, even on the hourly setting. Undelivered check-ins are no longer recorded anywhere, a failed delivery retries after about 15 minutes, and the quiet phase after three genuinely ignored check-ins now means one message per day instead of silence forever. The WhatsApp readiness check now agrees with the actual sender, and an error in Buddy Intelligence can no longer take Friend Mode down with it - each proactive feature fails alone and logs why.
+
+- **Streaming stays in one bubble - and you can scroll away from it.** During a tool turn the live answer now streams inside the same bubble it will finally land in, instead of a second bubble that visibly collapsed into the first the moment the answer finished. Scrolling up while Skales is thinking or typing now sticks: auto-follow can no longer mistake its own scroll for your gesture and yank you back to the bottom, the scroll listeners survive a rebuilt message list, and the jump-down arrow reliably appears when you are away from the latest message (above the chat, below every popup and lightbox). The typewriter itself is now immune to list rebuilds and loading flickers - an answer could previously get stuck fully invisible (reasoning block there, text missing until reload) when the message list was rebuilt mid-turn.
+
+- **The GIF switch does something now.** "Skales can proactively send GIFs" saved a setting that nothing in the app ever read. With the switch on, Skales may now add one fitting GIF to a casual, playful or celebratory reply on its own - in Telegram chats as a native GIF - sparingly, and never on serious or technical topics.
+
+- **Skales types its answers as they are generated.** Replies now stream into the chat token by token instead of appearing all at once after a wait - on OpenAI-compatible cloud providers (OpenAI, OpenRouter, Groq, DeepSeek, custom endpoints) and on local models (Ollama, LM Studio, llama.cpp). The biggest felt-speed difference, especially for local models. Anthropic and Gemini native connections still deliver in one piece for now.
+
+- **The reasoning block is there while the answer streams.** Models that think before they answer (DeepSeek, qwq, Gemini via OpenRouter, ...) show the collapsed reasoning block live, growing as the model thinks, instead of the trace appearing only after the full reply landed. The block stays collapsed and stable - no flicker, no width jumps, no answer disappearing - and expands on click exactly like before.
+
+- **No more emoji row above replies.** Replies no longer get a decorative row of animated emojis stuck above the text; emojis the assistant writes inside its sentences render normally. The reasoning and tool icons in the trace header are unchanged.
+
+- **The get-to-know-you question can appear after a normal chat answer.** The adaptive personalization layer used to surface its single, dismissable question only after a finished goal; a regular chat turn is now a surface moment too. Same protections: warm-up phase, a 6-hour quiet window, never during a running goal.
+
+- **/swarm: hand a task to another of your devices.** Type `/swarm <task>` (or `/swarm @device <task>`) in chat and another Skales on your network runs it, with the result coming back to your notifications when done. No setup, no organization concept - just delegation. The receiving device must opt in (Swarm page, "Accept delegated tasks") and both devices share a swarm secret, so nothing on your network can make your machine work without consent.
+
+- **Teams agents can actually do the work.** When you ask your agent in a team chat to do something, it now runs with this machine's full tools and posts the result to the team, instead of only being able to comment. Everything runs on your device with your keys; the teammate only ever sees the result, and a teammate's messages are treated as input, never as instructions to your agent.
+
+- **Briefing topics deliver real news.** A keyword topic used to return generic search-result links; it now pulls fresh articles from news feeds first (direct publisher links), with web search only as a last resort. Pasting a site URL already expanded its RSS feed - now both subscription types read like an actual news feed.
+
+- **"Remind me in an hour" becomes a real reminder.** The assistant sometimes created a plain to-do for time-based reminders, which fired at the wrong moment or not at all - and then picked its own channel for the message. Time-based phrasing now routes to a real scheduled reminder, and task results are always delivered on YOUR configured notification channel; the agent no longer picks Telegram or email on its own unless you named one.
+
+- **Two size controls under Settings → Appearance.** "Text size (chat bubbles)" scales only the chat conversation in steps from 85 to 140 percent - the rest of the app stays unchanged. "Skales size (whole window)" zooms the entire main window from 70 to 130 percent using the same mechanism as Ctrl+/Ctrl- (no layout gaps), ideal for small screens; the desktop buddy and AIPointer windows are not affected, and the control only appears in the desktop app (browsers have native zoom). Both apply immediately, persist across restarts, and reset to exactly today's look with one click.
+
+- **Reading email works with the new multi-account setup.** The connection test was green for IMAP and SMTP, yet Skales itself claimed the inbox was unreachable: sending already used your configured accounts, but reading still looked at the old single-account settings, which are empty for anyone who set accounts up in the new UI. Reading now uses your accounts too - the full-access account first, a read-only account as fallback.
+
+- **Voice messages are first-class on every channel.** A WhatsApp voice note to Skales was silently ignored and Telegram only knew two transcription providers; both now use the same transcription chain as the app (local endpoint, Azure, Groq, OpenAI), and when no provider is set up the message still arrives with a clear note instead of vanishing. The settings show the live chain, so you can see at a glance that a Groq or OpenAI key is enough.
+
+- **Voice notes in chat.** Hold the mic button to record, release to send: your recording stays in the chat as a playable bubble, the transcript becomes the message, and Skales answers with voice and text as before. Works with click-to-toggle too, and the bubble survives a reload.
+
+- **The assistant remembers its own replies to your contacts.** Outgoing messages to whitelisted WhatsApp contacts are recorded on every send path, so "what did you reply to her?" always has an answer.
+
+- **Cleaning up tasks from chat works.** Asking Skales to delete old tasks no longer fails with a missing tool: it can delete a single task, a Planner task, or clear all finished tasks at once (optionally only those older than N days).
+
+- **The agent-builder tool list stays current.** The tool catalogue on the Agents page is regenerated on every build instead of drifting out of date.
+
+- **Microphone over remote access gets a real answer.** Instead of a dead-end error on plain HTTP, chat and Call Mode now tell you exactly how to get a secure connection over Tailscale.
+
 ## v11.2.7
 
 ### Fixed

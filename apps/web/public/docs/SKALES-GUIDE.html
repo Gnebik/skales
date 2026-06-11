@@ -361,7 +361,7 @@
       <div class="logo-mark">S</div>
       <div>
         <div class="logo-text">Skales</div>
-        <div class="logo-version">v<span data-skales-version>11.1.0</span> User Guide</div>
+        <div class="logo-version">v<span data-skales-version>11.3.0</span> User Guide</div>
       </div>
     </a>
 
@@ -446,7 +446,7 @@
 
     <!-- Hero -->
     <div class="hero">
-      <div class="hero-badge">📖 Official Documentation · v<span data-skales-version>11.1.0</span></div>
+      <div class="hero-badge">📖 Official Documentation · v<span data-skales-version>11.3.0</span></div>
       <h1>Skales <span>User Guide</span></h1>
       <p>Your personal AI operating system. Set a goal, automate, create, all running locally on your machine.</p>
     </div>
@@ -614,6 +614,22 @@
       <div class="warn">
         <strong>⚠️ Safe Mode</strong> — In Safe Mode, Skales will show an approval prompt before executing destructive actions (delete files, send emails, shell commands). See <a href="#safety" style="color:var(--accent)">Safety Mode</a>.
       </div>
+    </section>
+
+    <!-- WHAT'S NEW v11.3.0 TOGETHER -->
+    <section id="together">
+      <h2><span class="icon">🤝</span> What&rsquo;s New in v11.3.0 <span class="badge badge-new">Together</span></h2>
+      <p>Together is about your devices and your people working as one &mdash; and about answers you can watch arrive.</p>
+      <ul>
+        <li><strong>Live streaming.</strong> Replies type into the chat token by token on OpenAI-compatible cloud providers and local models alike, and the reasoning trace is visible while the model thinks &mdash; collapsed, calm, no flicker.</li>
+        <li><strong>Swarm leaves alpha.</strong> Pair devices over mDNS or by IP (Tailscale peers survive restarts and stay online), then delegate from chat or the Swarm page: <code>/swarm &lt;task&gt;</code> picks the best free device, <code>/swarm @name &lt;task&gt;</code> targets one, and <code>/swarm @name code:|plan:|auto: &lt;task&gt;</code> sets how it runs there. Results come back into the same chat, into Notifications and into the shared task history.</li>
+        <li><strong>Teams agents do real work.</strong> Ask your agent in a team chat to do something and it runs with this machine&rsquo;s full tools, posting the result to the team &mdash; your keys never leave your device.</li>
+        <li><strong>Discover comes alive.</strong> &ldquo;Your AI wants to share&rdquo; suggestion cards arrive right after real work (approve or skip), your weekly Wrapped posts as a real image, and any Studio gallery image can be shared to the feed.</li>
+        <li><strong>Briefing delivers real news.</strong> Keyword topics pull fresh publisher articles from news feeds first &mdash; direct links, no redirect interstitials.</li>
+        <li><strong>Voice everywhere.</strong> WhatsApp and Telegram voice notes transcribe through the same chain as the app, and chat voice notes stay as playable bubbles.</li>
+        <li><strong>Two size controls.</strong> Chat text size (85&ndash;140%) and whole-window zoom (70&ndash;130%) under Settings &rarr; Appearance.</li>
+        <li><strong>Friend Mode cannot silently die.</strong> Undelivered check-ins retry instead of muting the feature, and the quiet phase means one note per day &mdash; never permanent silence.</li>
+      </ul>
     </section>
 
     <!-- WHAT'S NEW v11.2.7 RELIANCE -->
@@ -1215,9 +1231,10 @@
 
     <!-- Agent Swarm -->
     <section id="swarm">
-      <h2><span class="icon">🐝</span> Agent Swarm <span class="badge badge-alpha">Alpha</span></h2>
-      <p>Run multiple Skales instances on your network and have them collaborate. Uses <strong>mDNS</strong> to discover peers automatically — no configuration needed on a local network.</p>
-      <p>One instance acts as the <strong>coordinator</strong>, dispatching sub-tasks to <strong>worker</strong> instances. Results are aggregated and returned to the coordinator's chat.</p>
+      <h2><span class="icon">🐝</span> Agent Swarm <span class="badge badge-beta">Beta</span></h2>
+      <p>Run multiple Skales instances on your network and have them work as one. Peers are discovered automatically via <strong>mDNS</strong>, or added manually by <strong>IP:port</strong> (perfect for Tailscale) &mdash; manual peers survive restarts and are health-checked every 30 seconds.</p>
+      <p>Delegate from any chat: <code>/swarm &lt;task&gt;</code> sends to the best free device, <code>/swarm @name &lt;task&gt;</code> targets a specific one, and an optional mode prefix sets how the task runs on the receiver &mdash; <code>code:</code> (coding agent), <code>plan:</code> (read-only plan), <code>auto:</code> (fully autonomous). The Swarm page offers the same as a form, plus the shared task history with live status. Results return to the chat you sent from and to Notifications.</p>
+      <p><strong>Security:</strong> receiving devices must opt in (&ldquo;Accept delegated tasks&rdquo;) and both devices need the same <code>SKALES_AGENT_SECRET</code> environment variable. Delegated tasks appear on the receiver&rsquo;s Tasks page with a 🐝 badge naming the sender.</p>
     </section>
 
     <!-- Themes -->
@@ -1871,7 +1888,7 @@
     </section>
 
     <footer>
-      <span>Skales v<span data-skales-version>11.1.0</span> · © 2024-2026 Mario Simic · BSL 1.1</span>
+      <span>Skales v<span data-skales-version>11.3.0</span> · © 2024-2026 Mario Simic · BSL 1.1</span>
       <a href="https://skales.app">skales.app</a>
     </footer>
 
